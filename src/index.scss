@@ -1,3 +1,24 @@
+@import './styles/breakpoints';
+@import './styles/colors';
+@import './styles/variables';
+@import './styles/mixins';
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('../src/assets/fonts/Manrope-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('../src/assets/fonts/Manrope-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -10,9 +31,9 @@ html {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  color: #121417;
-  font-weight: 400;
+  font-family: $primary-font-family;
+  color: $primary-text-color;
+  font-weight: 500;
   margin: 0;
 }
 
