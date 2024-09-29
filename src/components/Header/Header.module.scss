@@ -1,0 +1,21 @@
+.header {
+  padding: 10px 20px 0 20px;
+}
+
+.headerWrapper {
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  padding-top: 18px;
+}
+
+.home {
+  background-color: $primary-accent-color;
+}
+
+.nav {
+  display: none;
+
+  @include media(desktop) {
+    display: flex;
+  }
+}

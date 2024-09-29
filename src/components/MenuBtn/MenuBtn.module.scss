@@ -1,0 +1,16 @@
+.menuBtn {
+  position: absolute;
+  top: 28px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include media(desktop) {
+    display: none;
+  }
+}
+
+.menuIcon {
+  stroke: $primary-text-color;
+}

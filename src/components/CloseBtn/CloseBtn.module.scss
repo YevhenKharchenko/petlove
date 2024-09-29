@@ -1,0 +1,12 @@
+.closeBtn {
+  position: absolute;
+  top: 28px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.closeIcon {
+  stroke: $primary-text-color;
+}

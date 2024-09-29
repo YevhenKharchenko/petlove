@@ -89,5 +89,11 @@
       <path fill="#fff4df" d="M32 16c0 8.837-7.163 16-16 16S0 24.837 0 16 7.163 0 16 0s16 7.163 16 16z" style="fill:var(--color6, #fff4df)"/>
       <path fill="#f6b83d" stroke="#f6b83d" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.28" d="M16 17.92c-2.029 0-3.833.98-4.982 2.5-.247.327-.371.491-.367.712.003.171.11.386.245.492.174.137.415.137.897.137h8.413c.482 0 .723 0 .897-.137a.714.714 0 0 0 .245-.492c.004-.221-.12-.385-.367-.712-1.149-1.52-2.953-2.5-4.982-2.5zM16 16a2.88 2.88 0 1 0 .001-5.759A2.88 2.88 0 0 0 16 16z" style="fill:var(--color3, #f6b83d);stroke:var(--color3, #f6b83d)"/>
     </symbol>
+     <symbol id="icon-x" viewBox="0 0 32 32">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M24 8 8 24M8 8l16 16"/>
+    </symbol>
+     <symbol id="icon-menu" viewBox="0 0 32 32">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 16h24M4 8h24M4 24h24"/>
+    </symbol>
   </defs>
 </svg>
