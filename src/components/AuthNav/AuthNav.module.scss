@@ -10,6 +10,12 @@
   }
 }
 
+.navMenu {
+  @include media(tablet) {
+    margin-left: 0;
+  }
+}
+
 .link {
   font-family: 'Manrope', sans-serif;
   font-weight: 700;
@@ -42,4 +48,8 @@
   @include media(tablet) {
     width: 149px;
   }
+}
+
+.loginHome {
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }

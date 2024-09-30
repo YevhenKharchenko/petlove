@@ -2,11 +2,16 @@ import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
 import s from './Nav.module.scss';
 
-const buildLinkClass = ({ isActive }) => {
-  return clsx(s.link, isActive && s.active);
-};
+const Nav = ({ className, isHomePage, isMenu }) => {
+  const buildLinkClass = ({ isActive }) => {
+    return clsx(
+      s.link,
+      isActive && s.active,
+      isHomePage && !isMenu && s.linkHome,
+      isMenu && !isHomePage && s.linkHome
+    );
+  };
 
-const Nav = ({ className }) => {
   return (
     <nav className={clsx(s.nav, className && className)}>
       <NavLink to="/news" className={buildLinkClass}>

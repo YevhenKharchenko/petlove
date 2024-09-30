@@ -1,6 +1,6 @@
 .backdrop {
   padding: 40px 20px;
-  background-color: $primary-white-color;
+  background-color: $primary-accent-color;
   z-index: 10;
   position: fixed;
   width: 218px;
@@ -19,4 +19,8 @@
   @include media(desktop) {
     display: none;
   }
+}
+
+.menuHome {
+  background-color: $primary-white-color;
 }
