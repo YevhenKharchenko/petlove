@@ -8,11 +8,18 @@ import s from './Header.module.scss';
 import { useState } from 'react';
 import AuthNav from '../AuthNav/AuthNav.jsx';
 import MenuBtn from '../MenuBtn/MenuBtn.jsx';
+import { useMediaQuery } from 'react-responsive';
 
 const Header = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/home' || location.pathname === '/';
   const [isOpen, setIsOpen] = useState(false);
+  const isDesktop = useMediaQuery({
+    query: '(min-width: 1440px)',
+  });
+  const isTablet = useMediaQuery({
+    query: '(min-width: 768px)',
+  });
 
   const handleMenuBtnClick = () => {
     setIsOpen(!isOpen);
@@ -21,10 +28,10 @@ const Header = () => {
   return (
     <header className={s.header}>
       <div className={clsx(s.headerWrapper, isHomePage && s.home)}>
-        <Container>
+        <Container className={s.headerContainer}>
           <Logo isHomePage={isHomePage} />
-          <Nav className={s.nav} />
-          <AuthNav />
+          {isDesktop && <Nav className={s.nav} />}
+          {isTablet && <AuthNav />}
           <MenuBtn handleClick={handleMenuBtnClick} />
           {isOpen && <BurgerMenu handleClick={handleMenuBtnClick} />}
         </Container>

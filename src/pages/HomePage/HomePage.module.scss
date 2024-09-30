@@ -1,0 +1,80 @@
+.hero {
+  padding: 0 20px 0 20px;
+
+  @include media(tablet) {
+    // padding: 0 32px 0 32px;
+  }
+}
+
+.heroWrapper {
+  background-color: $primary-accent-color;
+  padding-top: 60px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  max-width: 335px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include media(tablet) {
+    padding-top: 112px;
+    max-width: 704px;
+  }
+
+  @include media(desktop) {
+    max-width: 1216px;
+  }
+}
+
+.heroContainer {
+  padding-bottom: 50px;
+
+  @include media(tablet) {
+    padding-bottom: 44px;
+  }
+
+  @include media(desktop) {
+    display: flex;
+    padding-bottom: 32px;
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  color: $primary-white-color;
+  margin-bottom: 24px;
+
+  @include media(tablet) {
+    font-size: 80px;
+    margin-bottom: 32px;
+  }
+
+  @include media(desktop) {
+    font-size: 90px;
+    line-height: 0.96667;
+    margin-bottom: 0;
+  }
+}
+
+.span {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.text {
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.02em;
+  color: $primary-white-color;
+
+  @include media(tablet) {
+    font-size: 18px;
+    line-height: 1.22222;
+    width: 255px;
+    margin-left: auto;
+  }
+
+  @include media(desktop) {
+  }
+}

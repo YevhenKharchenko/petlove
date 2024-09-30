@@ -8,6 +8,8 @@
   }
 
   @include media(desktop) {
+    flex-direction: row;
+    margin-left: auto;
   }
 }
 

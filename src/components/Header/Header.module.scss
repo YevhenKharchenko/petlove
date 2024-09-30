@@ -6,6 +6,22 @@
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   padding-top: 18px;
+  max-width: 335px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include media(tablet) {
+    max-width: 704px;
+  }
+
+  @include media(desktop) {
+    max-width: 1216px;
+  }
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
 }
 
 .home {

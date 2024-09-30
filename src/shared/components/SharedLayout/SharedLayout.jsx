@@ -1,13 +1,16 @@
-import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { Suspense } from 'react';
 import Header from '../../../components/Header/Header.jsx';
 
-const SharedLayout = ({ children }) => {
+const SharedLayout = () => {
   return (
     <>
       <Toaster position="top-right" />
       <Header />
-      <Suspense fallback={null}>{children}</Suspense>
+      <Suspense fallback={null}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };
