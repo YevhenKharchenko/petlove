@@ -1,12 +1,12 @@
 import { sprite } from '../../../assets/icons/index.js';
-import s from './PasswordIcon.module.scss';
+import s from './PasswordBtn.module.scss';
 
-const PasswordIcon = ({ showPass }) => {
+const PasswordBtn = ({ showPass, onClick }) => {
   return (
     <button
       type="button"
       className={s.btn}
-      onClick={onclick}
+      onClick={onClick}
       aria-label={showPass ? 'Hide password' : 'Show password'}
     >
       <svg className={s.icon} width="18" height="18">
@@ -16,4 +16,4 @@ const PasswordIcon = ({ showPass }) => {
   );
 };
 
-export default PasswordIcon;
+export default PasswordBtn;

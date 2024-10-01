@@ -1,0 +1,40 @@
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formWrapper {
+  padding: 55px 20px;
+  background-color: $primary-white-color;
+  border-radius: 30px;
+}
+
+.text {
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.02em;
+  margin-top: 12px;
+  margin-bottom: 24px;
+}
+
+.linkWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.linkText {
+  font-size: 12px;
+  line-height: 1.16667;
+  letter-spacing: -0.03em;
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.link {
+  composes: linkText;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: $primary-accent-color;
+}
