@@ -9,16 +9,17 @@ import Container from '../../shared/components/Container/Container.jsx';
 import AuthNav from '../AuthNav/AuthNav.jsx';
 import MenuBtn from '../MenuBtn/MenuBtn.jsx';
 import s from './Header.module.scss';
+import { BREAKPOINT } from '../../constants/index.js';
 
 const Header = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/home' || location.pathname === '/';
   const [isOpen, setIsOpen] = useState(false);
   const isDesktop = useMediaQuery({
-    query: '(min-width: 1440px)',
+    query: `(min-width:${BREAKPOINT.DESKTOP}px)`,
   });
   const isTablet = useMediaQuery({
-    query: '(min-width: 768px)',
+    query: `(min-width:${BREAKPOINT.TABLET}px)`,
   });
 
   const handleMenuBtnClick = () => {

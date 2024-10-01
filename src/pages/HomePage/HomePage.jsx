@@ -8,6 +8,7 @@ import {
   homeImgDesk2x,
 } from '../../assets/images/index.js';
 import s from './HomePage.module.scss';
+import { BREAKPOINT } from '../../constants/index.js';
 
 const HomePage = () => {
   return (
@@ -24,8 +25,14 @@ const HomePage = () => {
         </div>
         <div>
           <picture>
-            <source srcSet={`${homeImgDesk} 1x, ${homeImgDesk2x} 2x`} media="(min-width: 1440px)" />
-            <source srcSet={`${homeImgTab} 1x, ${homeImgTab2x} 2x`} media="(min-width: 768px)" />
+            <source
+              srcSet={`${homeImgDesk} 1x, ${homeImgDesk2x} 2x`}
+              media={`(min-width:${BREAKPOINT.DESKTOP}px)`}
+            />
+            <source
+              srcSet={`${homeImgTab} 1x, ${homeImgTab2x} 2x`}
+              media={`(min-width:${BREAKPOINT.TABLET}px)`}
+            />
             <img
               className={s.img}
               srcSet={`${homeImg} 1x, ${homeImg2x} 2x`}

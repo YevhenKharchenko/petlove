@@ -1,4 +1,4 @@
 $primary-font-family: 'Manrope', sans-serif;
 
-$animation-time-function: linear;
-$animation-duration: 0.3s;
+$animation-time-function: cubic-bezier(0.4, 0, 0.2, 1);
+$animation-duration: 500ms;

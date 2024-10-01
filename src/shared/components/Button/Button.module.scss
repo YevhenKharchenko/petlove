@@ -1,0 +1,30 @@
+.button {
+  border-radius: 30px;
+  padding: 15px 35px;
+  width: auto;
+  height: 42px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: $primary-white-color;
+  background-color: $primary-accent-color;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all $animation-duration $animation-time-function;
+
+  &:hover {
+    background-color: $primary-hover-accent-color;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  @include media(tablet) {
+    height: 52px;
+  }
+}
