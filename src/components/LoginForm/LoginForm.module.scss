@@ -1,11 +1,19 @@
-.label {
+.passWrapper {
   position: relative;
 }
 
 .errorContainer {
-  min-height: 15px;
-  margin-top: 4px;
-  margin-bottom: 4px;
+  min-height: 12px;
+  margin-top: 2px;
+  margin-bottom: 6px;
+  padding-left: 12px;
+
+  @include media(tablet) {
+    min-height: 14px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    padding-left: 16px;
+  }
 }
 
 .error {
@@ -13,6 +21,11 @@
   line-height: 1.2;
   letter-spacing: -0.03em;
   color: $error-input-color;
+
+  @include media(tablet) {
+    font-size: 12px;
+    line-height: 1.16667;
+  }
 }
 
 .success {
@@ -25,8 +38,10 @@
   margin-top: 20px;
 
   @include media(tablet) {
+    margin-top: 32px;
   }
 
   @include media(desktop) {
+    margin-top: 40px;
   }
 }

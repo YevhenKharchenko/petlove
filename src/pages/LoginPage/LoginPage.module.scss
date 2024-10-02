@@ -1,13 +1,47 @@
+.section {
+  padding: 20px 0;
+
+  @include media(tablet) {
+    padding: 32px 0;
+  }
+}
+
 .loginContainer {
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  @include media(tablet) {
+    gap: 16px;
+  }
+
+  @include media(desktop) {
+    flex-direction: row;
+    gap: 32px;
+  }
 }
 
 .formWrapper {
   padding: 55px 20px;
   background-color: $primary-white-color;
   border-radius: 30px;
+
+  @include media(tablet) {
+    padding: 71px 140px;
+    border-radius: 60px;
+  }
+
+  @include media(tablet) {
+    padding: 114px 84px;
+  }
+}
+
+.formContainer {
+  @include media(tablet) {
+    max-width: 424px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .text {
@@ -16,12 +50,24 @@
   letter-spacing: -0.02em;
   margin-top: 12px;
   margin-bottom: 24px;
+
+  @include media(tablet) {
+    font-size: 18px;
+    line-height: 1.22222;
+    letter-spacing: -0.02em;
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
 }
 
 .linkWrapper {
   display: flex;
   justify-content: center;
   margin-top: 12px;
+
+  @include media(tablet) {
+    margin-top: 16px;
+  }
 }
 
 .linkText {
@@ -29,6 +75,11 @@
   line-height: 1.16667;
   letter-spacing: -0.03em;
   color: rgba(38, 38, 38, 0.5);
+
+  @include media(tablet) {
+    font-size: 14px;
+    line-height: 1.42857;
+  }
 }
 
 .link {

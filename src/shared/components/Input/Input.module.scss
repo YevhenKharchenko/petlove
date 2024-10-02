@@ -1,7 +1,7 @@
 .input {
   border: 1px solid $primary-border-color;
   border-radius: 30px;
-  padding: 12px 40px 12px 12px;
+  padding: 12px 60px 12px 12px;
   width: 295px;
   height: 42px;
   font-family: $primary-font-family;
@@ -9,14 +9,45 @@
   font-size: 14px;
   line-height: 1.28571;
   letter-spacing: -0.03em;
-  color: rgba(38, 38, 38, 0.8);
+  color: $primary-input-color;
   outline: none;
+
+  &:hover,
+  &:focus {
+    border-color: $primary-accent-color;
+  }
+
+  &::placeholder {
+    color: $primary-placeholder-color;
+  }
+
+  @include media(mobile) {
+  }
 
   @include media(tablet) {
     font-size: 16px;
     line-height: 1.25;
     width: 424px;
     height: 52px;
-    padding: 16px 40px 16px 16px;
+    padding: 16px 76px 16px 16px;
+  }
+}
+
+.check {
+  border-color: $valid-input-color;
+  color: $primary-text-color;
+
+  &:hover,
+  &:focus {
+    border-color: $valid-input-color;
+  }
+}
+
+.error {
+  border-color: $error-input-color;
+
+  &:hover,
+  &:focus {
+    border-color: $error-input-color;
   }
 }

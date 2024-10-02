@@ -27,12 +27,18 @@ const LoginPage = () => {
           alt="Dog"
         />
         <div className={s.formWrapper}>
-          <Title title="Log in" />
-          <p className={s.text}>Welcome! Please enter your credentials to login to the platform:</p>
-          <LoginForm />
-          <div className={s.linkWrapper}>
-            <p className={s.linkText}>Don’t have an account?&nbsp;</p>
-            <Link className={s.link}>Register</Link>
+          <div className={s.formContainer}>
+            <Title title="Log in" />
+            <p className={s.text}>
+              Welcome! Please enter your credentials to login to the platform:
+            </p>
+            <LoginForm />
+            <div className={s.linkWrapper}>
+              <p className={s.linkText}>Don’t have an account?&nbsp;</p>
+              <Link className={s.link} to="/register">
+                Register
+              </Link>
+            </div>
           </div>
         </div>
       </Container>
