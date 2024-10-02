@@ -1,5 +1,13 @@
-.passWrapper {
+.inputWrapper {
   position: relative;
+}
+
+.emailCheck {
+  right: 12px;
+
+  @include media(tablet) {
+    right: 16px;
+  }
 }
 
 .errorContainer {

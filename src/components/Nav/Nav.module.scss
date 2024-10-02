@@ -23,7 +23,7 @@
   border: 1px solid $primary-border-color;
   border-radius: 30px;
   width: 119px;
-  height: 48px;
+  height: 50px;
   text-align: center;
 }
 
@@ -34,4 +34,8 @@
 .linkHome {
   border-color: rgba(255, 255, 255, 0.4);
   color: $primary-white-color;
+}
+
+.linkMenu {
+  height: 48px;
 }

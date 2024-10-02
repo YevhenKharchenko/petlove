@@ -8,7 +8,8 @@ const Nav = ({ className, isHomePage, isMenu }) => {
       s.link,
       isActive && s.active,
       isHomePage && !isMenu && s.linkHome,
-      isMenu && !isHomePage && s.linkHome
+      isMenu && !isHomePage && s.linkHome,
+      isMenu && s.linkMenu
     );
   };
 

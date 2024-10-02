@@ -2,12 +2,12 @@ import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useState } from 'react';
 import { loginValidationSchema } from '../../validation/validationSchema.js';
+import { checkPasswordStrength, checkEmailValidation } from '../../utils/index.js';
 import Input from '../../shared/components/Input/Input.jsx';
 import PasswordBtn from '../../shared/components/PasswordBtn/PasswordBtn.jsx';
 import Button from '../../shared/components/Button/Button.jsx';
 import CheckIcon from '../../shared/components/CheckIcon/CheckIcon.jsx';
 import s from './LoginForm.module.scss';
-import { EMAIL_REGEX } from '../../constants/index.js';
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -25,16 +25,12 @@ const LoginForm = () => {
   const password = watch('password');
 
   useEffect(() => {
-    const checkPasswordStrength = password => {
-      setIsPasswordSecure(password && password.length >= 7);
-    };
+    const timeoutId = setTimeout(() => {
+      checkPasswordStrength(password, setIsPasswordSecure);
+      checkEmailValidation(email, setIsEmailValid);
+    }, 300);
 
-    const checkEmailValidation = email => {
-      setIsEmailValid(email && email.match(EMAIL_REGEX));
-    };
-
-    checkPasswordStrength(password);
-    checkEmailValidation(email);
+    return () => clearTimeout(timeoutId);
   }, [password, email]);
 
   const onSubmit = async ({ email, password }) => {
@@ -45,26 +41,29 @@ const LoginForm = () => {
   return (
     <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
       <label className={s.label}>
-        <Controller
-          name="email"
-          control={control}
-          defaultValue=""
-          render={({ field }) => (
-            <Input
-              type="text"
-              placeholder="Email"
-              error={!!email && !isEmailValid}
-              check={!!email && isEmailValid}
-              {...field}
-            />
-          )}
-        />
+        <div className={s.inputWrapper}>
+          <Controller
+            name="email"
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <Input
+                type="text"
+                placeholder="Email"
+                error={(!!email && !isEmailValid) || !!errors.email}
+                check={!!email && isEmailValid}
+                {...field}
+              />
+            )}
+          />
+          {!!email && <CheckIcon isChecked={isEmailValid} className={s.emailCheck} />}
+        </div>
         <div className={s.errorContainer}>
           {errors.email && <p className={s.error}>{errors.email.message}</p>}
         </div>
       </label>
       <label className={s.label}>
-        <div className={s.passWrapper}>
+        <div className={s.inputWrapper}>
           <Controller
             name="password"
             control={control}
@@ -73,7 +72,7 @@ const LoginForm = () => {
               <Input
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Password"
-                error={!!password && !isPasswordSecure}
+                error={(!!password && !isPasswordSecure) || !!errors.password}
                 check={!!password && isPasswordSecure}
                 {...field}
               />

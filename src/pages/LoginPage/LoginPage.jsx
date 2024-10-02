@@ -16,7 +16,7 @@ import s from './LoginPage.module.scss';
 const LoginPage = () => {
   return (
     <section className={s.section}>
-      <Container className={s.loginContainer}>
+      <Container className={s.authContainer}>
         <PetBlock
           mob={loginImg}
           mob2x={loginImg2x}

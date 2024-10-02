@@ -26,8 +26,11 @@
   border-radius: 30px;
   padding: 12px;
   width: 178px;
-  height: 42px;
+  height: 50px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .login {
@@ -62,4 +65,8 @@
 
 .loginHome {
   border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.linkMenu {
+  height: 42px;
 }

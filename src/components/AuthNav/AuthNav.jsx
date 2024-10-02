@@ -11,12 +11,13 @@ const AuthNav = ({ isHomePage, isMenu }) => {
           s.link,
           s.login,
           isHomePage && s.loginHome,
-          isMenu && !isHomePage && s.loginHome
+          isMenu && !isHomePage && s.loginHome,
+          isMenu && s.linkMenu
         )}
       >
         Log In
       </Link>
-      <Link to="/register" className={clsx(s.link, s.register)}>
+      <Link to="/register" className={clsx(s.link, s.register, isMenu && s.linkMenu)}>
         Registration
       </Link>
     </nav>
