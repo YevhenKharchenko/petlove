@@ -18,4 +18,5 @@ export const registerValidationSchema = yup.object().shape({
     .required('Password is required')
     .min(7, 'Password must be at least 7 characters long')
     .max(20, 'Password cannot be longer than 20 characters'),
+  matchedPassword: yup.string().required('Passwords do not match'),
 });

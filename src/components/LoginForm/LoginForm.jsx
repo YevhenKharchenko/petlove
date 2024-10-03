@@ -36,6 +36,8 @@ const LoginForm = () => {
   const onSubmit = async ({ email, password }) => {
     console.log({ email, password });
     reset();
+    setIsEmailValid(false);
+    setIsPasswordSecure(false);
   };
 
   return (
@@ -88,13 +90,11 @@ const LoginForm = () => {
         </div>
         <div className={s.errorContainer}>
           {errors.password && <p className={s.error}>{errors.password.message}</p>}
-          {!errors.password &&
-            !!password &&
-            (isPasswordSecure ? (
-              <p className={s.success}>Password is secure</p>
-            ) : (
-              <p className={s.error}>Password is too weak</p>
-            ))}
+          {!errors.password && !!password && (
+            <p className={isPasswordSecure ? s.success : s.error}>
+              {isPasswordSecure ? 'Password is secure' : 'Password is too weak'}
+            </p>
+          )}
         </div>
       </label>
       <Button type="submit" title="Log In" className={s.btn} />

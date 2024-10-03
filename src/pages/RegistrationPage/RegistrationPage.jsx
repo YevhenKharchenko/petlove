@@ -9,7 +9,7 @@ import {
 } from '../../assets/images/index.js';
 import Title from '../../shared/components/Title/Title.jsx';
 import PetBlock from '../../shared/components/PetBlock/PetBlock.jsx';
-import LoginForm from '../../components/LoginForm/LoginForm.jsx';
+import RegistrationForm from '../../components/RegistrationForm/RegistrationForm.jsx';
 import Container from '../../shared/components/Container/Container.jsx';
 import s from './RegistrationPage.module.scss';
 
@@ -30,7 +30,7 @@ const RegistrationPage = () => {
           <div className={s.formContainer}>
             <Title title="Registration" />
             <p className={s.text}>Thank you for your interest in our platform.</p>
-            <LoginForm />
+            <RegistrationForm />
             <div className={s.linkWrapper}>
               <p className={s.linkText}>Already have an account?&nbsp;</p>
               <Link className={s.link} to="/login">
