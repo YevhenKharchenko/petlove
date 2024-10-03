@@ -1,20 +1,24 @@
 import clsx from 'clsx';
 import { useMediaQuery } from 'react-responsive';
 import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { useState } from 'react';
+import { selectIsLoggedIn } from '../../redux/users/selectors.js';
+import { BREAKPOINT } from '../../constants/index.js';
 import BurgerMenu from '../BurgerMenu/BurgerMenu.jsx';
 import Logo from '../Logo/Logo.jsx';
 import Nav from '../Nav/Nav.jsx';
 import Container from '../../shared/components/Container/Container.jsx';
 import AuthNav from '../AuthNav/AuthNav.jsx';
 import MenuBtn from '../MenuBtn/MenuBtn.jsx';
+import UserNav from '../UserNav/UserNav.jsx';
 import s from './Header.module.scss';
-import { BREAKPOINT } from '../../constants/index.js';
 
 const Header = () => {
   const location = useLocation();
   const isHomePage = location.pathname === '/home' || location.pathname === '/';
   const [isOpen, setIsOpen] = useState(false);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const isDesktop = useMediaQuery({
     query: `(min-width:${BREAKPOINT.DESKTOP}px)`,
   });
@@ -25,6 +29,7 @@ const Header = () => {
   const handleMenuBtnClick = () => {
     setIsOpen(!isOpen);
   };
+  console.log(isLoggedIn);
 
   return (
     <header className={s.header}>
@@ -32,7 +37,8 @@ const Header = () => {
         <Container className={s.headerContainer}>
           <Logo isHomePage={isHomePage} />
           {isDesktop && <Nav className={s.nav} isHomePage={isHomePage} />}
-          {isTablet && <AuthNav isHomePage={isHomePage} />}
+          {isTablet && !isLoggedIn && <AuthNav isHomePage={isHomePage} />}
+          {isLoggedIn && <UserNav isTablet={isTablet} isHomePage={isHomePage} />}
           <MenuBtn isHomePage={isHomePage} handleClick={handleMenuBtnClick} />
           {isOpen && <BurgerMenu handleClick={handleMenuBtnClick} isHomePage={isHomePage} />}
         </Container>

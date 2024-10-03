@@ -15,8 +15,18 @@
 
 .menuIcon {
   stroke: $primary-text-color;
+
+  @include media(tablet) {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 .menuIconHome {
   stroke: $primary-white-color;
+
+  @include media(tablet) {
+    width: 36px;
+    height: 36px;
+  }
 }

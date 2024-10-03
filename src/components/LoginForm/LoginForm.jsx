@@ -8,8 +8,12 @@ import PasswordBtn from '../../shared/components/PasswordBtn/PasswordBtn.jsx';
 import Button from '../../shared/components/Button/Button.jsx';
 import CheckIcon from '../../shared/components/CheckIcon/CheckIcon.jsx';
 import s from './LoginForm.module.scss';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../redux/users/operations.js';
+import { toast } from 'react-toastify';
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [isPasswordSecure, setIsPasswordSecure] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(false);
@@ -35,6 +39,7 @@ const LoginForm = () => {
 
   const onSubmit = async ({ email, password }) => {
     console.log({ email, password });
+    dispatch(loginUser({ email, password }));
     reset();
     setIsEmailValid(false);
     setIsPasswordSecure(false);

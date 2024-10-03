@@ -1,12 +1,12 @@
 import { Outlet } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
 import { Suspense } from 'react';
 import Header from '../../../components/Header/Header.jsx';
+import { ToastContainer } from 'react-toastify';
 
 const SharedLayout = () => {
   return (
     <>
-      <Toaster position="top-right" />
+      <ToastContainer />
       <Suspense fallback={null}>
         <Header />
         <Outlet />

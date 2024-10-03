@@ -1,6 +1,7 @@
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { registerValidationSchema } from '../../validation/validationSchema.js';
 import {
   checkPasswordStrength,
@@ -13,8 +14,10 @@ import PasswordBtn from '../../shared/components/PasswordBtn/PasswordBtn.jsx';
 import Button from '../../shared/components/Button/Button.jsx';
 import CheckIcon from '../../shared/components/CheckIcon/CheckIcon.jsx';
 import s from './RegistrationForm.module.scss';
+import { registerUser } from '../../redux/users/operations.js';
 
 const RegistrationForm = () => {
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [showMatchPassword, setShowMatchPassword] = useState(false);
   const [isPasswordSecure, setIsPasswordSecure] = useState(false);
@@ -49,6 +52,7 @@ const RegistrationForm = () => {
     if (!isPasswordMatch) return;
 
     console.log({ name, email, password });
+    await dispatch(registerUser({ name, email, password }));
     reset();
     setIsPasswordSecure(false);
     setIsEmailValid(false);
