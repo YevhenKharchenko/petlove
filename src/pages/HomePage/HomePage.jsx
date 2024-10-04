@@ -12,9 +12,9 @@ import { BREAKPOINT } from '../../constants/index.js';
 
 const HomePage = () => {
   return (
-    <section className={s.hero}>
+    <main className={s.hero}>
       <Container>
-        <div className={s.heroWrapper}>
+        <section className={s.heroWrapper}>
           <h1 className={s.title}>
             Take good <span className={s.span}>care</span> of your small pets
           </h1>
@@ -22,8 +22,8 @@ const HomePage = () => {
             Choosing a pet for your home is a choice that is meant to enrich your life with
             immeasurable joy and tenderness.
           </p>
-        </div>
-        <div>
+        </section>
+        <section>
           <picture>
             <source
               srcSet={`${homeImgDesk} 1x, ${homeImgDesk2x} 2x`}
@@ -41,9 +41,9 @@ const HomePage = () => {
               height=""
             />
           </picture>
-        </div>
+        </section>
       </Container>
-    </section>
+    </main>
   );
 };
 

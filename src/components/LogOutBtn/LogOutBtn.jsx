@@ -5,7 +5,7 @@ import Button from '../../shared/components/Button/Button.jsx';
 import ModalApproveAction from '../ModalApproveAction/ModalApproveAction.jsx';
 import s from './LogOutBtn.module.scss';
 
-const LogOutBtn = ({ isHomePage }) => {
+const LogOutBtn = ({ isHomePage, className }) => {
   const setModal = useModal();
 
   const closeModal = useCallback(() => {
@@ -19,7 +19,7 @@ const LogOutBtn = ({ isHomePage }) => {
   return (
     <Button
       title="Log out"
-      className={clsx(s.logoutBtn, isHomePage && s.logoutBtnHome)}
+      className={clsx(s.logoutBtn, className && className, isHomePage && s.logoutBtnHome)}
       onClick={openLogoutModal}
     />
   );

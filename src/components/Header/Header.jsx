@@ -29,7 +29,6 @@ const Header = () => {
   const handleMenuBtnClick = () => {
     setIsOpen(!isOpen);
   };
-  console.log(isLoggedIn);
 
   return (
     <header className={s.header}>
@@ -39,7 +38,11 @@ const Header = () => {
           {isDesktop && <Nav className={s.nav} isHomePage={isHomePage} />}
           {isTablet && !isLoggedIn && <AuthNav isHomePage={isHomePage} />}
           {isLoggedIn && <UserNav isTablet={isTablet} isHomePage={isHomePage} />}
-          <MenuBtn isHomePage={isHomePage} handleClick={handleMenuBtnClick} />
+          <MenuBtn
+            isHomePage={isHomePage}
+            handleClick={handleMenuBtnClick}
+            isLoggedIn={isLoggedIn}
+          />
           {isOpen && <BurgerMenu handleClick={handleMenuBtnClick} isHomePage={isHomePage} />}
         </Container>
       </div>

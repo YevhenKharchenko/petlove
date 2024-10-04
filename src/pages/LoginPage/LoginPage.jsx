@@ -15,7 +15,7 @@ import s from './LoginPage.module.scss';
 
 const LoginPage = () => {
   return (
-    <section className={s.section}>
+    <main className={s.section}>
       <Container className={s.authContainer}>
         <PetBlock
           mob={loginImg}
@@ -26,7 +26,7 @@ const LoginPage = () => {
           desk2x={loginImgDesk2x}
           alt="Dog"
         />
-        <div className={s.formWrapper}>
+        <section className={s.formWrapper}>
           <div className={s.formContainer}>
             <Title title="Log in" />
             <p className={s.text}>
@@ -40,9 +40,9 @@ const LoginPage = () => {
               </Link>
             </div>
           </div>
-        </div>
+        </section>
       </Container>
-    </section>
+    </main>
   );
 };
 

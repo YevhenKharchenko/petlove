@@ -15,7 +15,7 @@ import s from './RegistrationPage.module.scss';
 
 const RegistrationPage = () => {
   return (
-    <section className={s.section}>
+    <main className={s.section}>
       <Container className={s.authContainer}>
         <PetBlock
           mob={registerImg}
@@ -26,7 +26,7 @@ const RegistrationPage = () => {
           desk2x={registerImgDesk2x}
           alt="Cat"
         />
-        <div className={s.formWrapper}>
+        <section className={s.formWrapper}>
           <div className={s.formContainer}>
             <Title title="Registration" />
             <p className={s.text}>Thank you for your interest in our platform.</p>
@@ -38,9 +38,9 @@ const RegistrationPage = () => {
               </Link>
             </div>
           </div>
-        </div>
+        </section>
       </Container>
-    </section>
+    </main>
   );
 };
 

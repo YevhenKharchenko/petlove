@@ -9,15 +9,17 @@ import {
   checkUsernameValidation,
   checkPasswordMatch,
 } from '../../utils/index.js';
+import { registerUser } from '../../redux/users/operations.js';
+import { useNavigate } from 'react-router-dom';
 import Input from '../../shared/components/Input/Input.jsx';
 import PasswordBtn from '../../shared/components/PasswordBtn/PasswordBtn.jsx';
 import Button from '../../shared/components/Button/Button.jsx';
 import CheckIcon from '../../shared/components/CheckIcon/CheckIcon.jsx';
 import s from './RegistrationForm.module.scss';
-import { registerUser } from '../../redux/users/operations.js';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showMatchPassword, setShowMatchPassword] = useState(false);
   const [isPasswordSecure, setIsPasswordSecure] = useState(false);
@@ -58,6 +60,7 @@ const RegistrationForm = () => {
     setIsEmailValid(false);
     setIsUsernameValid(false);
     setIsPasswordMatch(false);
+    navigate('/profile');
   };
 
   return (

@@ -1,0 +1,16 @@
+.link {
+  border-radius: 30px;
+  padding: 10px 16px;
+  height: 38px;
+  font-family: $primary-font-family;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.03em;
+  color: $primary-white-color;
+  background-color: $primary-accent-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}

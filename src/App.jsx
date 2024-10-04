@@ -4,6 +4,7 @@ import { lazy } from 'react';
 import SharedLayout from './shared/components/SharedLayout/SharedLayout.jsx';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
+const ProfilePage = lazy(() => import('./pages/ProfilePage/ProfilePage.jsx'));
 const NewsPage = lazy(() => import('./pages/NewsPage/NewsPage.jsx'));
 const NoticesPage = lazy(() => import('./pages/NoticesPage/NoticesPage.jsx'));
 const FriendsPage = lazy(() => import('./pages/FriendsPage/FriendsPage.jsx'));
@@ -16,6 +17,7 @@ function App() {
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Navigate to="/home" />} />
         <Route path="home" element={<HomePage />} />
+        <Route path="profile" element={<ProfilePage />} />
         <Route path="news" element={<NewsPage />} />
         <Route path="notices" element={<NoticesPage />} />
         <Route path="friends" element={<FriendsPage />} />

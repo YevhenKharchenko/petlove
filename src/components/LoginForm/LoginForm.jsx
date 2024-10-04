@@ -3,17 +3,18 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useState } from 'react';
 import { loginValidationSchema } from '../../validation/validationSchema.js';
 import { checkPasswordStrength, checkEmailValidation } from '../../utils/index.js';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../redux/users/operations.js';
+import { useNavigate } from 'react-router-dom';
 import Input from '../../shared/components/Input/Input.jsx';
 import PasswordBtn from '../../shared/components/PasswordBtn/PasswordBtn.jsx';
 import Button from '../../shared/components/Button/Button.jsx';
 import CheckIcon from '../../shared/components/CheckIcon/CheckIcon.jsx';
 import s from './LoginForm.module.scss';
-import { useDispatch } from 'react-redux';
-import { loginUser } from '../../redux/users/operations.js';
-import { toast } from 'react-toastify';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [isPasswordSecure, setIsPasswordSecure] = useState(false);
   const [isEmailValid, setIsEmailValid] = useState(false);
@@ -43,6 +44,7 @@ const LoginForm = () => {
     reset();
     setIsEmailValid(false);
     setIsPasswordSecure(false);
+    navigate('/profile')
   };
 
   return (

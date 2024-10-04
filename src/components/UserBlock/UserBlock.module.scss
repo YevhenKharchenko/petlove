@@ -1,0 +1,40 @@
+.userBlock {
+}
+
+.avatarWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.btn {
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 1.33333;
+  letter-spacing: -0.02em;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+
+.infoWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.infoText {
+  border: 1px solid #f6b83d;
+  border-radius: 30px;
+  padding: 12px;
+  width: 295px;
+  height: 42px;
+}
