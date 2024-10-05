@@ -40,11 +40,11 @@ const LoginForm = () => {
 
   const onSubmit = async ({ email, password }) => {
     console.log({ email, password });
-    dispatch(loginUser({ email, password }));
+    await dispatch(loginUser({ email, password }));
     reset();
     setIsEmailValid(false);
     setIsPasswordSecure(false);
-    navigate('/profile')
+    navigate('/profile');
   };
 
   return (

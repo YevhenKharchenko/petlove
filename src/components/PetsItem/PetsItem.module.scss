@@ -4,6 +4,10 @@
   padding: 12px 12px 16px 16px;
   display: flex;
   gap: 14px;
+
+  @include media(tablet) {
+    max-width: 305px;
+  }
 }
 
 .imgWrapper {
@@ -24,6 +28,7 @@
   font-weight: 700;
   font-size: 14px;
   line-height: 1.28571;
+  color: $secondary-text-color;
 }
 
 .deleteBtn {

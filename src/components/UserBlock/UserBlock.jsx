@@ -1,7 +1,13 @@
+import { useSelector } from 'react-redux';
+import { selectEmail, selectPhone, selectUsername } from '../../redux/users/selectors.js';
 import { sprite } from '../../assets/icons/index.js';
 import s from './UserBlock.module.scss';
 
 const UserBlock = () => {
+  const username = useSelector(selectUsername);
+  const email = useSelector(selectEmail);
+  const phone = useSelector(selectPhone);
+
   return (
     <div className={s.userBlock}>
       <div className={s.avatarWrapper}>
@@ -12,9 +18,9 @@ const UserBlock = () => {
       </div>
       <h2 className={s.title}>My information</h2>
       <div className={s.infoWrapper}>
-        <p className={s.infoText}></p>
-        <p className={s.infoText}></p>
-        <p className={s.infoText}></p>
+        <p className={s.infoText}>{username}</p>
+        <p className={s.infoText}>{email}</p>
+        <p className={s.infoText}>{phone || '+380'}</p>
       </div>
     </div>
   );

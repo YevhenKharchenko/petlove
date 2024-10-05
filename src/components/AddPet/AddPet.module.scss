@@ -13,4 +13,11 @@
   justify-content: center;
   align-items: center;
   gap: 4px;
+
+  @include media(tablet) {
+    padding: 10px 20px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 1.25;
+  }
 }

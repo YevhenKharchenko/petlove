@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerUser, loginUser, logoutUser } from './operations';
+import { registerUser, loginUser, logoutUser, getCurrentUserFull } from './operations';
 import { handleError, handleRefreshing } from '../../utils/index.js';
 
 const authSlice = createSlice({
@@ -8,7 +8,12 @@ const authSlice = createSlice({
     user: {
       name: null,
       email: null,
+      avatar: '',
+      phone: '',
     },
+    pets: [],
+    favorites: [],
+    views: [],
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
@@ -42,7 +47,23 @@ const authSlice = createSlice({
         state.user = { name: null, email: null };
         state.token = null;
       })
-      .addCase(logoutUser.rejected, handleError);
+      .addCase(logoutUser.rejected, handleError)
+      .addCase(getCurrentUserFull.pending, handleRefreshing)
+      .addCase(getCurrentUserFull.fulfilled, (state, action) => {
+        state.isRefreshing = false;
+        state.error = null;
+        state.user = {
+          name: action.payload.name,
+          email: action.payload.email,
+          avatar: action.payload.avatar,
+          phone: action.payload.phone,
+        };
+        state.token = action.payload.token;
+        state.pets = action.payload.pets;
+        state.favorites = action.payload.noticesFavorites;
+        state.views = action.payload.noticesViewed;
+      })
+      .addCase(getCurrentUserFull.rejected, handleError);
   },
 });
 

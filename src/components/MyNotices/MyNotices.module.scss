@@ -1,0 +1,72 @@
+.section {
+  padding: 40px 0 80px 0;
+
+  @include media(tablet) {
+    padding: 32px 0 80px 0;
+  }
+}
+
+.btnWrapper {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+
+  @include media(tablet) {
+    gap: 8px;
+  }
+}
+
+.btn {
+  font-weight: 500;
+  line-height: 1.28571;
+  color: $primary-text-color;
+  background-color: $primary-white-color;
+  padding: 12px;
+  width: 130px;
+  text-transform: none;
+
+  @include media(tablet) {
+    padding: 14px;
+    font-size: 16px;
+    line-height: 1.25;
+    width: 150px;
+  }
+}
+
+.option {
+  color: $primary-white-color;
+  background-color: $primary-accent-color;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @include media(tablet) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.textEmpty {
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-top: 60px;
+
+  @include media(tablet) {
+    margin-top: 160px;
+    max-width: 458px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}
+
+.span {
+  font-weight: 700;
+  color: $primary-accent-color;
+}

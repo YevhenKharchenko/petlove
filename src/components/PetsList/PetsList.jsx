@@ -3,9 +3,11 @@ import s from './PetsList.module.scss';
 
 const PetsList = () => {
   return (
-    <div>
+    <ul className={s.list}>
       <PetsItem />
-    </div>
+      <PetsItem />
+      <PetsItem />
+    </ul>
   );
 };
 

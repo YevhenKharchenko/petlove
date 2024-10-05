@@ -24,7 +24,7 @@ instance.interceptors.response.use(
   error => {
     if (error.response && error.response.status === 401) {
       console.error('Unauthorized, logging out...');
-      store.dispatch(logoutUser());
+      // store.dispatch(logoutUser());
     }
     return Promise.reject(error);
   }

@@ -1,12 +1,20 @@
-.userBlock {
-}
-
 .avatarWrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-bottom: 28px;
+
+  @include media(tablet) {
+    margin-bottom: 20px;
+  }
+}
+
+.icon {
+  @include media(tablet) {
+    width: 110px;
+    height: 110px;
+  }
 }
 
 .btn {
@@ -16,6 +24,12 @@
   letter-spacing: -0.02em;
   text-decoration: underline;
   text-decoration-skip-ink: none;
+  font-weight: 500;
+
+  @include media(tablet) {
+    font-size: 14px;
+    line-height: 1.28571;
+  }
 }
 
 .title {
@@ -23,18 +37,37 @@
   font-size: 16px;
   line-height: 1.25;
   margin-bottom: 20px;
+  color: $secondary-text-color;
+
+  @include media(tablet) {
+    font-size: 18px;
+    line-height: 1.33333;
+  }
 }
 
 .infoWrapper {
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  @include media(tablet) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 
 .infoText {
-  border: 1px solid #f6b83d;
+  border: 1px solid $primary-accent-color;
   border-radius: 30px;
   padding: 12px;
   width: 295px;
   height: 42px;
+  display: flex;
+  align-items: center;
+
+  @include media(tablet) {
+    padding: 16px;
+    width: 305px;
+    height: 52px;
+  }
 }

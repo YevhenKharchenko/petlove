@@ -9,7 +9,7 @@ import s from './UserCard.module.scss';
 const UserCard = () => {
   return (
     <section className={s.section}>
-      <Container>
+      <Container className={s.container}>
         <div className={s.editBtnWrapper}>
           <div className={s.userContainer}>
             <span className={s.userText}>User</span>

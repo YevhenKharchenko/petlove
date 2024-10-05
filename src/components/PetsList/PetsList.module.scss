@@ -1,0 +1,10 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  @include media(tablet) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

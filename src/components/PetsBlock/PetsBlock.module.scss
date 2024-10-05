@@ -11,4 +11,10 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 1.25;
+  color: $secondary-text-color;
+
+  @include media(tablet) {
+    font-size: 18px;
+    line-height: 1.33333;
+  }
 }

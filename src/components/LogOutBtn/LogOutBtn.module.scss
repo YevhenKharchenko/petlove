@@ -3,6 +3,10 @@
     padding: 15px 35px;
     height: 50px;
   }
+
+  &:hover {
+    background-color: $secondary-hover-accent-color;
+  }
 }
 
 .logoutBtnHome {

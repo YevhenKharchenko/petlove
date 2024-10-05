@@ -40,8 +40,22 @@ export const loginUser = createAsyncThunk('auth/login', async (credentials, thun
 
 export const logoutUser = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
-    const { data } = await instance.post('/users/signout');
+    await instance.post('/users/signout');
     toast.success('You have been successfully logged out.');
+  } catch (e) {
+    toast.error(
+      `Oops! Something went wrong. Please try again later or contact support. Error details: ${e.message}`
+    );
+    return thunkAPI.rejectWithValue(e.message);
+  }
+});
+
+export const getCurrentUserFull = createAsyncThunk('auth/getCurrent', async (_, thunkAPI) => {
+  try {
+    const { data } = await instance.get('/users/current/full');
+    console.log(data);
+
+    return data;
   } catch (e) {
     toast.error(
       `Oops! Something went wrong. Please try again later or contact support. Error details: ${e.message}`
