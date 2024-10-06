@@ -17,6 +17,13 @@
   }
 }
 
+.avatarImg {
+  @include media(tablet) {
+    width: 110px;
+    height: 110px;
+  }
+}
+
 .btn {
   margin-top: 8px;
   font-size: 12px;
@@ -54,6 +61,10 @@
     flex-direction: row;
     flex-wrap: wrap;
   }
+
+  @include media(desktop) {
+    gap: 14px;
+  }
 }
 
 .infoText {
@@ -69,5 +80,9 @@
     padding: 16px;
     width: 305px;
     height: 52px;
+  }
+
+  @include media(desktop) {
+    width: 100%;
   }
 }

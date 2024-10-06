@@ -53,6 +53,21 @@ export const logoutUser = createAsyncThunk('auth/logout', async (_, thunkAPI) =>
 export const getCurrentUserFull = createAsyncThunk('auth/getCurrent', async (_, thunkAPI) => {
   try {
     const { data } = await instance.get('/users/current/full');
+
+    return data;
+  } catch (e) {
+    toast.error(
+      `Oops! Something went wrong. Please try again later or contact support. Error details: ${e.message}`
+    );
+    return thunkAPI.rejectWithValue(e.message);
+  }
+});
+
+export const updateUser = createAsyncThunk('auth/update', async (formData, thunkAPI) => {
+  console.log(formData);
+
+  try {
+    const { data } = await instance.patch('/users/current/edit', formData);
     console.log(data);
 
     return data;

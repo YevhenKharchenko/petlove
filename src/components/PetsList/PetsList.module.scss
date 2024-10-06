@@ -7,4 +7,9 @@
     flex-direction: row;
     flex-wrap: wrap;
   }
+
+  @include media(desktop) {
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
 }

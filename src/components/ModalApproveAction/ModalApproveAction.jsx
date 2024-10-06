@@ -1,10 +1,10 @@
-import { sprite } from '../../assets/icons/index.js';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from '../../redux/users/operations.js';
+import { sprite } from '../../assets/icons/index.js';
 import CloseBtn from '../CloseBtn/CloseBtn.jsx';
 import Button from '../../shared/components/Button/Button.jsx';
 import s from './ModalApproveAction.module.scss';
-import { useNavigate } from 'react-router-dom';
 
 const ModalApproveAction = ({ closeModal }) => {
   const dispatch = useDispatch();

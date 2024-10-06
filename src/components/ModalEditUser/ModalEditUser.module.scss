@@ -1,0 +1,120 @@
+.container {
+  border-radius: 30px;
+  background-color: $primary-white-color;
+  padding: 40px 20px;
+  position: relative;
+  max-width: 335px;
+
+  @include media(tablet) {
+    max-width: 480px;
+    padding: 50px;
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  color: $secondary-text-color;
+  margin-bottom: 20px;
+
+  @include media(tablet) {
+    font-size: 18px;
+    line-height: 1.33333;
+  }
+}
+
+.img {
+  border-radius: 100px;
+  width: 80px;
+  height: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 12px;
+
+  @include media(tablet) {
+    width: 86px;
+    height: 86px;
+  }
+}
+
+.fileInputWrapper {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+
+  @include media(tablet) {
+    margin-bottom: 20px;
+  }
+}
+
+input.pathInput {
+  padding: 13px 39px 13px 12px;
+  width: 161px;
+  height: 42px;
+
+  @include media(tablet) {
+    padding: 12px 20px 12px 12px;
+    width: 226px;
+  }
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.uploadBtn {
+  font-size: 12px;
+  line-height: 1.33333;
+  letter-spacing: -0.02em;
+  color: $secondary-text-color;
+  background-color: $secondary-accent-color;
+  border-radius: 30px;
+  padding: 12px;
+  max-width: 126px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  @include media(tablet) {
+    padding: 12px 14px;
+    max-width: 146px;
+    font-size: 14px;
+    line-height: 1.28571;
+    font-weight: 500;
+  }
+}
+
+.labelWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 21px;
+
+  @include media(tablet) {
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+}
+
+input.input {
+  @include media(tablet) {
+    width: 100%;
+  }
+}
+
+.goToBtn {
+  width: 100%;
+  text-transform: none;
+}

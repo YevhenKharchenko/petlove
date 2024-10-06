@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerUser, loginUser, logoutUser, getCurrentUserFull } from './operations';
+import { registerUser, loginUser, logoutUser, getCurrentUserFull, updateUser } from './operations';
 import { handleError, handleRefreshing } from '../../utils/index.js';
 
 const authSlice = createSlice({
@@ -63,7 +63,23 @@ const authSlice = createSlice({
         state.favorites = action.payload.noticesFavorites;
         state.views = action.payload.noticesViewed;
       })
-      .addCase(getCurrentUserFull.rejected, handleError);
+      .addCase(getCurrentUserFull.rejected, handleError)
+      .addCase(updateUser.pending, handleRefreshing)
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.isRefreshing = false;
+        state.error = null;
+        state.user = {
+          name: action.payload.name,
+          email: action.payload.email,
+          avatar: action.payload.avatar,
+          phone: action.payload.phone,
+        };
+        state.token = action.payload.token;
+        state.pets = action.payload.pets;
+        state.favorites = action.payload.noticesFavorites;
+        state.views = action.payload.noticesViewed;
+      })
+      .addCase(updateUser.rejected, handleError);
   },
 });
 

@@ -3,4 +3,8 @@ export const BREAKPOINT = {
   DESKTOP: '1280',
 };
 
-export const EMAIL_REGEX = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+export const REGEX = {
+  EMAIL: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
+  AVATAR: /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/,
+  PHONE: /^\+38\d{10}$/,
+};
