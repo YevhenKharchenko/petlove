@@ -64,11 +64,9 @@ export const getCurrentUserFull = createAsyncThunk('auth/getCurrent', async (_, 
 });
 
 export const updateUser = createAsyncThunk('auth/update', async (formData, thunkAPI) => {
-  console.log(formData);
-
   try {
     const { data } = await instance.patch('/users/current/edit', formData);
-    console.log(data);
+    toast.success('Your profile has been updated successfully!');
 
     return data;
   } catch (e) {

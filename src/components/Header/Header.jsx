@@ -43,7 +43,13 @@ const Header = () => {
             handleClick={handleMenuBtnClick}
             isLoggedIn={isLoggedIn}
           />
-          {isOpen && <BurgerMenu handleClick={handleMenuBtnClick} isHomePage={isHomePage} />}
+          {isOpen && (
+            <BurgerMenu
+              handleClick={handleMenuBtnClick}
+              isHomePage={isHomePage}
+              isLoggedIn={isLoggedIn}
+            />
+          )}
         </Container>
       </div>
     </header>

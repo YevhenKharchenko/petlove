@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRef, useState } from 'react';
+import { updateUser } from '../../redux/users/operations.js';
 import { userProfileValidationSchema } from '../../validation/validationSchema.js';
 import {
   selectAvatar,
@@ -9,12 +10,12 @@ import {
   selectPhone,
   selectUsername,
 } from '../../redux/users/selectors.js';
+import { REGEX } from '../../constants/index.js';
 import { sprite } from '../../assets/icons/index.js';
 import CloseBtn from '../CloseBtn/CloseBtn.jsx';
 import Input from '../../shared/components/Input/Input.jsx';
 import Button from '../../shared/components/Button/Button.jsx';
 import s from './ModalEditUser.module.scss';
-import { updateUser } from '../../redux/users/operations.js';
 
 const ModalEditUser = ({ closeModal }) => {
   const dispatch = useDispatch();
@@ -25,22 +26,29 @@ const ModalEditUser = ({ closeModal }) => {
   const phone = useSelector(selectPhone);
   const [preview, setPreview] = useState(avatar);
   const [filename, setFilename] = useState('');
+  const [inputUrl, setInputUrl] = useState('');
   const {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
-    trigger,
-    setValue,
-    getValues,
   } = useForm({
     resolver: yupResolver(userProfileValidationSchema),
     defaultValues: {
+      avatar,
       name,
       email,
       phone: phone || '+380',
     },
   });
+
+  const handleUrlChange = e => {
+    const url = e.target.value;
+    setInputUrl(url);
+
+    if (url.match(REGEX.AVATAR)) {
+      setPreview(url);
+    }
+  };
 
   const handleUploadClick = () => {
     fileInputRef.current.click();
@@ -57,22 +65,13 @@ const ModalEditUser = ({ closeModal }) => {
   };
 
   const onSubmit = async formData => {
-    console.log(formData);
+    const filteredData = Object.fromEntries(
+      Object.entries(formData).filter(([_, value]) => value !== '' && value !== null)
+    );
 
-    const data = new FormData();
-    data.append('name', formData.name);
-    data.append('email', formData.email);
-    data.append('phone', formData.phone);
+    await dispatch(updateUser(filteredData));
 
-    const selectedFile = fileInputRef.current.files[0];
-    console.log('Selected file before append:', selectedFile);
-
-    if (selectedFile) {
-      data.append('avatar', selectedFile);
-    }
-    console.log([...data.entries()]);
-
-    await dispatch(updateUser(formData));
+    closeModal();
   };
 
   return (
@@ -80,22 +79,25 @@ const ModalEditUser = ({ closeModal }) => {
       <CloseBtn handleClick={closeModal} isHomePage={true} />
       <h2 className={s.title}>Edit information</h2>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-        {avatar.length ? (
-          <img src={avatar} alt="Avatar" width="80" height="80" className={s.img} />
-        ) : (
-          <svg className={s.img} width="94" height="94">
-            <use xlinkHref={`${sprite}#icon-user`}></use>
-          </svg>
-        )}
+        <div className={s.imgWrapper}>
+          {avatar.length ? (
+            <img src={preview} alt="Avatar" width="80" height="80" className={s.img} />
+          ) : (
+            <svg className={s.img} width="94" height="94">
+              <use xlinkHref={`${sprite}#icon-user`}></use>
+            </svg>
+          )}
+        </div>
         <div className={s.fileInputWrapper}>
           <label>
             <Input
               type="text"
-              //   value={filename}
               className={s.pathInput}
               name="avatar"
               {...register('avatar')}
               placeholder="No file chosen"
+              value={inputUrl}
+              onChange={handleUrlChange}
             />
           </label>
           <label className={s.uploadLabel}>
@@ -114,6 +116,9 @@ const ModalEditUser = ({ closeModal }) => {
             </button>
           </label>
         </div>
+        <div className={s.errorContainer}>
+          {errors.avatar && <p className={s.error}>{errors.avatar.message}</p>}
+        </div>
         <div className={s.labelWrapper}>
           <label className={s.label}>
             <Input
@@ -123,6 +128,9 @@ const ModalEditUser = ({ closeModal }) => {
               error={errors.username?.message}
               className={s.input}
             />
+            <div className={s.errorContainer}>
+              {errors.username && <p className={s.error}>{errors.username.message}</p>}
+            </div>
           </label>
           <label className={s.label}>
             <Input
@@ -132,6 +140,9 @@ const ModalEditUser = ({ closeModal }) => {
               error={errors.email?.message}
               className={s.input}
             />
+            <div className={s.errorContainer}>
+              {errors.email && <p className={s.error}>{errors.email.message}</p>}
+            </div>
           </label>
           <label className={s.label}>
             <Input
@@ -141,6 +152,9 @@ const ModalEditUser = ({ closeModal }) => {
               error={errors.phone?.message}
               className={s.input}
             />
+            <div className={s.errorContainer}>
+              {errors.phone && <p className={s.error}>{errors.phone.message}</p>}
+            </div>
           </label>
         </div>
         <Button className={s.goToBtn} title="Save" type="submit" />

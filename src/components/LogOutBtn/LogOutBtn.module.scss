@@ -12,3 +12,23 @@
 .logoutBtnHome {
   border: 1px solid rgba(255, 255, 255, 0.4);
 }
+
+.logoutBtnMenu {
+  padding: 12px 58px;
+  line-height: 1.28571;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-top: auto;
+  color: $primary-accent-color;
+  background: $secondary-accent-color;
+  transition: all $animation-duration $animation-time-function;
+
+  &:hover {
+    background-color: $secondary-hover-accent-color;
+  }
+
+  @include media(tablet) {
+    padding: 12px 38px;
+    width: 149px;
+  }
+}

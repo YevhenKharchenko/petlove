@@ -17,7 +17,7 @@ const UserBlock = () => {
   return (
     <div className={s.userBlock}>
       <div className={s.avatarWrapper}>
-        {avatar.length ? (
+        {avatar?.length ? (
           <img src={avatar} alt="Avatar" width="94" height="94" className={s.avatarImg} />
         ) : (
           <svg className={s.icon} width="94" height="94">

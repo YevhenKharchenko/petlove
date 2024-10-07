@@ -24,6 +24,14 @@ export const registerValidationSchema = yup.object().shape({
 export const userProfileValidationSchema = yup.object().shape({
   name: yup.string(),
   email: yup.string().matches(REGEX.EMAIL, 'Invalid email format'),
-  avatar: yup.string().matches(REGEX.AVATAR, 'Invalid image format'),
-  phone: yup.string().matches(REGEX.PHONE, 'Invalid phone format'),
+  avatar: yup
+    .string()
+    .transform(value => (value === '' ? null : value))
+    .nullable()
+    .matches(REGEX.AVATAR, 'Avatar must be an image file'),
+  phone: yup
+    .string()
+    .transform(value => (value === '' ? null : value))
+    .nullable()
+    .matches(REGEX.PHONE, 'Invalid phone format'),
 });
