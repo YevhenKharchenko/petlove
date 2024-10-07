@@ -1,4 +1,6 @@
 import { useSelector } from 'react-redux';
+import { useCallback } from 'react';
+import { useModal } from '../../hooks/index.js';
 import {
   selectAvatar,
   selectEmail,
@@ -6,6 +8,7 @@ import {
   selectUsername,
 } from '../../redux/users/selectors.js';
 import { sprite } from '../../assets/icons/index.js';
+import ModalEditUser from '../ModalEditUser/ModalEditUser.jsx';
 import s from './UserBlock.module.scss';
 
 const UserBlock = () => {
@@ -13,6 +16,16 @@ const UserBlock = () => {
   const email = useSelector(selectEmail);
   const phone = useSelector(selectPhone);
   const avatar = useSelector(selectAvatar);
+
+  const setModal = useModal();
+
+  const closeModal = useCallback(() => {
+    setModal();
+  }, [setModal]);
+
+  const openModalEditUser = useCallback(() => {
+    setModal(<ModalEditUser closeModal={closeModal} />);
+  }, [setModal, closeModal]);
 
   return (
     <div className={s.userBlock}>
@@ -24,7 +37,9 @@ const UserBlock = () => {
             <use xlinkHref={`${sprite}#icon-user`}></use>
           </svg>
         )}
-        <button className={s.btn}>Upload photo</button>
+        <button className={s.btn} onClick={openModalEditUser}>
+          Upload photo
+        </button>
       </div>
       <h2 className={s.title}>My information</h2>
       <div className={s.infoWrapper}>

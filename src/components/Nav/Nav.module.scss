@@ -25,6 +25,11 @@
   width: 119px;
   height: 50px;
   text-align: center;
+  transition: all $animation-duration $animation-time-function;
+
+  &:hover {
+    border-color: $primary-accent-color;
+  }
 }
 
 .active {
@@ -34,6 +39,11 @@
 .linkHome {
   border-color: rgba(255, 255, 255, 0.4);
   color: $primary-white-color;
+
+  &:hover {
+    color: $primary-accent-color;
+    background-color: #fff4df;
+  }
 }
 
 .linkMenu {

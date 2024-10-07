@@ -30,3 +30,5 @@ export { default as registerImgTab } from './register-tab.webp';
 export { default as registerImgTab2x } from './register-tab@2x.webp';
 export { default as registerImgDesk } from './register-desk.webp';
 export { default as registerImgDesk2x } from './register-desk@2x.webp';
+export { default as catImg } from './cat.webp';
+export { default as catImg2x } from './cat@2x.webp';

@@ -25,7 +25,6 @@ const ModalEditUser = ({ closeModal }) => {
   const email = useSelector(selectEmail);
   const phone = useSelector(selectPhone);
   const [preview, setPreview] = useState(avatar);
-  const [filename, setFilename] = useState('');
   const [inputUrl, setInputUrl] = useState('');
   const {
     register,
@@ -60,13 +59,12 @@ const ModalEditUser = ({ closeModal }) => {
     if (selectedAvatar) {
       const objectURL = URL.createObjectURL(selectedAvatar);
       setPreview(objectURL);
-      setFilename(selectedAvatar.name);
     }
   };
 
   const onSubmit = async formData => {
     const filteredData = Object.fromEntries(
-      Object.entries(formData).filter(([_, value]) => value !== '' && value !== null)
+      Object.entries(formData).filter(([, value]) => value !== '' && value !== null)
     );
 
     await dispatch(updateUser(filteredData));

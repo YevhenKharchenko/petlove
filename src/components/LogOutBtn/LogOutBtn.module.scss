@@ -5,6 +5,7 @@
   }
 
   &:hover {
+    color: $primary-accent-color;
     background-color: $secondary-hover-accent-color;
   }
 }
