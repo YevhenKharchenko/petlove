@@ -1,0 +1,192 @@
+.form {
+}
+
+.fieldset {
+  padding: 0;
+  margin: 0 0 8px 0;
+  border: none;
+  display: flex;
+  gap: 8px;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.imgWrapper {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.img {
+  border-radius: 100px;
+  width: 80px;
+  height: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 12px;
+
+  @include media(tablet) {
+    width: 86px;
+    height: 86px;
+  }
+}
+
+.fileInputWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+input.pathInput {
+  padding: 13px 39px 13px 12px;
+  width: 161px;
+  height: 42px;
+
+  @include media(tablet) {
+    padding: 12px 20px 12px 12px;
+    width: 226px;
+  }
+}
+
+.uploadBtn {
+  font-size: 12px;
+  line-height: 1.33333;
+  letter-spacing: -0.02em;
+  color: $secondary-text-color;
+  background-color: $secondary-accent-color;
+  border-radius: 30px;
+  padding: 12px;
+  max-width: 126px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  @include media(tablet) {
+    padding: 12px 14px;
+    max-width: 146px;
+    font-size: 14px;
+    line-height: 1.28571;
+    font-weight: 500;
+  }
+}
+
+.labelWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+input.input {
+  @include media(tablet) {
+    width: 100%;
+  }
+}
+
+.errorContainer {
+  min-height: 12px;
+  margin-top: 2px;
+  margin-bottom: 4px;
+  padding-left: 12px;
+
+  @include media(tablet) {
+    min-height: 14px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    padding-left: 16px;
+  }
+}
+
+.error {
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: $error-input-color;
+
+  @include media(tablet) {
+    font-size: 12px;
+    line-height: 1.16667;
+  }
+}
+
+.dateWrapper {
+  width: 144px;
+  position: relative;
+}
+
+.calendarIcon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  fill: $primary-white-color;
+  stroke: $primary-text-color;
+}
+
+.dateInput {
+  border: 1px solid $primary-border-color;
+  border-radius: 30px;
+  padding: 12px 40px 12px 12px;
+  width: 144px;
+  height: 42px;
+  font-family: $primary-font-family;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.03em;
+  color: $primary-input-color;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    border-color: $primary-accent-color;
+  }
+
+  &::placeholder {
+    color: $primary-placeholder-color;
+  }
+
+  @include media(tablet) {
+    font-size: 16px;
+    line-height: 1.25;
+    width: 424px;
+    height: 52px;
+    padding: 16px 76px 16px 16px;
+  }
+}
+
+.bottomInputWrapper {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.btnWrapper {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 8px;
+}
+
+.backBtn {
+  text-transform: none;
+  background-color: $grey-btn-bg-color;
+  color: $primary-text-color;
+
+  &:hover {
+    background-color: $primary-border-color;
+  }
+}
+
+.submitBtn {
+  text-transform: none;
+}

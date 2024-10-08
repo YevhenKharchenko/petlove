@@ -1,0 +1,16 @@
+export const speciesOptions = [
+  { value: 'dog', label: 'Dog' },
+  { value: 'cat', label: 'Cat' },
+  { value: 'monkey', label: 'Monkey' },
+  { value: 'bird', label: 'Bird' },
+  { value: 'snake', label: 'Snake' },
+  { value: 'turtle', label: 'Turtle' },
+  { value: 'lizard', label: 'Lizard' },
+  { value: 'frog', label: 'Frog' },
+  { value: 'fish', label: 'Fish' },
+  { value: 'ants', label: 'Ants' },
+  { value: 'bees', label: 'Bees' },
+  { value: 'butterfly', label: 'Butterfly' },
+  { value: 'spider', label: 'Spider' },
+  { value: 'scorpion', label: 'Scorpion' },
+];

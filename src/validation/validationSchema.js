@@ -35,3 +35,12 @@ export const userProfileValidationSchema = yup.object().shape({
     .nullable()
     .matches(REGEX.PHONE, 'Invalid phone format'),
 });
+
+export const addPetValidationSchema = yup.object().shape({
+  title: yup.string().required(),
+  name: yup.string().required(),
+  imgUrl: yup.string().required().matches(REGEX.AVATAR, 'Invalid url format'),
+  // species: yup.string().required(),
+  // birthday: yup.string().required().matches(REGEX.BIRTHDAY, 'Invalid birthday format'),
+  // sex: yup.string.required(),
+});

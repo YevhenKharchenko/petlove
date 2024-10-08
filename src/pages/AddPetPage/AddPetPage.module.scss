@@ -1,0 +1,51 @@
+.section {
+  padding: 20px 0;
+
+  @include media(tablet) {
+    padding: 32px 0;
+  }
+}
+
+.petContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  @include media(tablet) {
+    gap: 16px;
+  }
+
+  @include media(desktop) {
+    flex-direction: row;
+    gap: 32px;
+  }
+}
+
+.formWrapper {
+  padding: 28px 20px;
+  background-color: $primary-white-color;
+  border-radius: 30px;
+
+  @include media(tablet) {
+    padding: 71px 140px;
+    border-radius: 60px;
+  }
+
+  @include media(desktop) {
+    padding: 114px 84px;
+  }
+}
+
+.titleWrapper {
+  display: flex;
+  gap: 8px;
+  align-items: end;
+  margin-bottom: 24px;
+}
+
+.subtitle {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.28571;
+  color: $subtitle-primary-text-color;
+}
