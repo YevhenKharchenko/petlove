@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
 
 import SharedLayout from './shared/components/SharedLayout/SharedLayout.jsx';
+import { PrivateRoute } from './components/PrivateRoute.jsx';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const ProfilePage = lazy(() => import('./pages/ProfilePage/ProfilePage.jsx'));
@@ -18,13 +19,19 @@ function App() {
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<Navigate to="/home" />} />
         <Route path="home" element={<HomePage />} />
-        <Route path="profile" element={<ProfilePage />} />
         <Route path="news" element={<NewsPage />} />
         <Route path="notices" element={<NoticesPage />} />
         <Route path="friends" element={<FriendsPage />} />
         <Route path="register" element={<RegistrationPage />} />
         <Route path="login" element={<LoginPage />} />
-        <Route path="add-pet" element={<AddPetPage />} />
+        <Route
+          path="profile"
+          element={<PrivateRoute redirectTo="/home" component={<ProfilePage />} />}
+        />
+        <Route
+          path="add-pet"
+          element={<PrivateRoute redirectTo="/home" component={<AddPetPage />} />}
+        />
         <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Routes>

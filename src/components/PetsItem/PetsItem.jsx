@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
+import { removePet } from '../../redux/users/operations.js';
 import { sprite } from '../../assets/icons/index.js';
 import s from './PetsItem.module.scss';
-import { removePet } from '../../redux/users/operations.js';
 
 const PetsItem = ({ item }) => {
   const dispatch = useDispatch();

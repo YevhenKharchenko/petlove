@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { store } from '../redux/store.js';
-import { logoutUser } from '../redux/users/operations.js';
+import { logout } from '../redux/users/slice.js';
 
 export const instance = axios.create({
   baseURL: 'https://petlove.b.goit.study/api',
@@ -24,7 +24,7 @@ instance.interceptors.response.use(
   error => {
     if (error.response && error.response.status === 401) {
       console.error('Unauthorized, logging out...');
-      // store.dispatch(logoutUser());
+      store.dispatch(logout());
     }
     return Promise.reject(error);
   }

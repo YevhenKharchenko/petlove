@@ -27,6 +27,18 @@ const authSlice = createSlice({
     isRefreshing: false,
     error: null,
   },
+  reducers: {
+    logout(state) {
+      state.isRefreshing = false;
+      state.isLoggedIn = false;
+      state.error = null;
+      state.user = { name: null, email: null };
+      state.token = null;
+      state.pets = null;
+      state.favorites = null;
+      state.views = null;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(registerUser.pending, handleRefreshing)
@@ -54,6 +66,9 @@ const authSlice = createSlice({
         state.error = null;
         state.user = { name: null, email: null };
         state.token = null;
+        state.pets = null;
+        state.favorites = null;
+        state.views = null;
       })
       .addCase(logoutUser.rejected, handleError)
       .addCase(getCurrentUserFull.pending, handleRefreshing)
@@ -104,5 +119,7 @@ const authSlice = createSlice({
       .addCase(removePet.rejected, handleError);
   },
 });
+
+export const { logout } = authSlice.actions;
 
 export const authReducer = authSlice.reducer;

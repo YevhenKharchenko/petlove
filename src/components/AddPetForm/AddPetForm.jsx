@@ -187,9 +187,6 @@ const AddPetForm = () => {
                     onChange(selectedOption.value);
                   }}
                   onBlur={onBlur}
-                  components={{
-                    IndicatorSeparator: () => null,
-                  }}
                 />
               )}
             />
