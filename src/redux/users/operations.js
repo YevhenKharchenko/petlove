@@ -76,3 +76,31 @@ export const updateUser = createAsyncThunk('auth/update', async (formData, thunk
     return thunkAPI.rejectWithValue(e.message);
   }
 });
+
+export const addPet = createAsyncThunk('auth/addPet', async (formData, thunkAPI) => {
+  try {
+    const { data } = await instance.post('/users/current/pets/add', formData);
+    toast.success('Pet has been added successfully!');
+
+    return data;
+  } catch (e) {
+    toast.error(
+      `Oops! Something went wrong. Please try again later or contact support. Error details: ${e.message}`
+    );
+    return thunkAPI.rejectWithValue(e.message);
+  }
+});
+
+export const removePet = createAsyncThunk('auth/removePet', async (id, thunkAPI) => {
+  try {
+    const { data } = await instance.delete(`/users/current/pets/remove/${id}`);
+    toast.success('Pet has been removed');
+
+    return data;
+  } catch (e) {
+    toast.error(
+      `Oops! Something went wrong. Please try again later or contact support. Error details: ${e.message}`
+    );
+    return thunkAPI.rejectWithValue(e.message);
+  }
+});

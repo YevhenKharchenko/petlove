@@ -1,12 +1,14 @@
+import { format, parseISO } from 'date-fns';
 import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useRef, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useRef, useState } from 'react';
 import { addPetValidationSchema } from '../../validation/validationSchema.js';
+import { addPet } from '../../redux/users/operations.js';
 import { speciesOptions } from '../../constants/selectOptions.js';
 import { selectStyles } from '../../constants/selectStyles.js';
 import { REGEX } from '../../constants/index.js';
@@ -21,12 +23,15 @@ const AddPetForm = () => {
   const fileInputRef = useRef(null);
   const [preview, setPreview] = useState('');
   const [inputUrl, setInputUrl] = useState('');
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm({ resolver: yupResolver(addPetValidationSchema) });
+  } = useForm({
+    resolver: yupResolver(addPetValidationSchema),
+  });
 
   const handleUrlChange = e => {
     const url = e.target.value;
@@ -50,8 +55,13 @@ const AddPetForm = () => {
     }
   };
 
+  const onSubmit = async data => {
+    await dispatch(addPet(data));
+    navigate('/profile');
+  };
+
   return (
-    <form className={s.form}>
+    <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
       <fieldset className={s.fieldset}>
         <label>
           <input type="radio" className={s.visuallyHidden} {...register('sex')} value="female" />
@@ -73,20 +83,20 @@ const AddPetForm = () => {
         </label>
       </fieldset>
       <div className={s.imgWrapper}>
-        {/* {avatar.length ? (
-          <img src={preview} alt="Avatar" width="80" height="80" className={s.img} />
-        ) : ( */}
-        <svg className={s.petImg} width="68" height="68">
-          <use xlinkHref={`${sprite}#icon-paw`}></use>
-        </svg>
-        {/* )} */}
+        {preview.length ? (
+          <img src={preview} alt="Avatar" width="68" height="68" className={s.img} />
+        ) : (
+          <svg className={s.img} width="68" height="68">
+            <use xlinkHref={`${sprite}#icon-paw`}></use>
+          </svg>
+        )}
       </div>
       <div className={s.fileInputWrapper}>
         <label>
           <Input
             type="text"
             className={s.pathInput}
-            {...register('imgUrl')}
+            {...register('imgURL')}
             placeholder="Enter URL"
             value={inputUrl}
             onChange={handleUrlChange}
@@ -109,19 +119,19 @@ const AddPetForm = () => {
         </label>
       </div>
       <div className={s.errorContainer}>
-        {errors.avatar && <p className={s.error}>{errors.avatar.message}</p>}
+        {errors.imgURL && <p className={s.error}>{errors.imgURL.message}</p>}
       </div>
       <div className={s.labelWrapper}>
         <label className={s.label}>
           <Input type="text" {...register('title')} className={s.input} placeholder="Title" />
           <div className={s.errorContainer}>
-            {errors.username && <p className={s.error}>{errors.username.message}</p>}
+            {errors.title && <p className={s.error}>{errors.title.message}</p>}
           </div>
         </label>
         <label className={s.label}>
           <Input type="text" {...register('name')} className={s.input} placeholder="Pet’s Name" />
           <div className={s.errorContainer}>
-            {errors.email && <p className={s.error}>{errors.email.message}</p>}
+            {errors.name && <p className={s.error}>{errors.name.message}</p>}
           </div>
         </label>
       </div>
@@ -132,16 +142,24 @@ const AddPetForm = () => {
             onClick={() => document.getElementById('date-input').focus()}
           >
             <Controller
-              name="date"
+              name="birthday"
               control={control}
-              render={({ field }) => (
+              render={({ field: { onChange, onBlur, value } }) => (
                 <DatePicker
                   id="date-input"
                   className={s.dateInput}
                   placeholderText=""
-                  selected={field.value}
-                  onChange={field.onChange}
-                  dateFormat="dd/MM/yyyy"
+                  selected={value ? parseISO(value) : null}
+                  onChange={date => {
+                    if (date) {
+                      const formattedDate = format(date, 'yyyy-MM-dd');
+                      onChange(formattedDate);
+                    } else {
+                      onChange(null);
+                    }
+                  }}
+                  onBlur={onBlur}
+                  dateFormat="yyyy-MM-dd"
                 />
               )}
             />
@@ -155,14 +173,25 @@ const AddPetForm = () => {
         </label>
         <div className={s.selectWrapper}>
           <label className={s.selectLabel}>
-            <Select
-              className={s.select}
-              styles={selectStyles}
-              options={speciesOptions}
+            <Controller
               name="species"
-              components={{
-                IndicatorSeparator: () => null,
-              }}
+              control={control}
+              render={({ field: { onChange, onBlur, value, ref } }) => (
+                <Select
+                  inputRef={ref}
+                  id="species-select"
+                  styles={selectStyles}
+                  options={speciesOptions}
+                  value={speciesOptions.find(option => option.value === value)}
+                  onChange={selectedOption => {
+                    onChange(selectedOption.value);
+                  }}
+                  onBlur={onBlur}
+                  components={{
+                    IndicatorSeparator: () => null,
+                  }}
+                />
+              )}
             />
             <div className={s.errorContainer}>
               {errors.species && <p className={s.error}>{errors.species.message}</p>}

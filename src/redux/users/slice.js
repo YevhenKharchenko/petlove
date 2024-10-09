@@ -1,5 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerUser, loginUser, logoutUser, getCurrentUserFull, updateUser } from './operations';
+import {
+  registerUser,
+  loginUser,
+  logoutUser,
+  getCurrentUserFull,
+  updateUser,
+  addPet,
+  removePet,
+} from './operations';
 import { handleError, handleRefreshing } from '../../utils/index.js';
 
 const authSlice = createSlice({
@@ -79,7 +87,21 @@ const authSlice = createSlice({
         state.favorites = action.payload.noticesFavorites;
         state.views = action.payload.noticesViewed;
       })
-      .addCase(updateUser.rejected, handleError);
+      .addCase(updateUser.rejected, handleError)
+      .addCase(addPet.pending, handleRefreshing)
+      .addCase(addPet.fulfilled, (state, action) => {
+        state.isRefreshing = false;
+        state.error = null;
+        state.pets = action.payload.pets;
+      })
+      .addCase(addPet.rejected, handleError)
+      .addCase(removePet.pending, handleRefreshing)
+      .addCase(removePet.fulfilled, (state, action) => {
+        state.isRefreshing = false;
+        state.error = null;
+        state.pets = action.payload.pets;
+      })
+      .addCase(removePet.rejected, handleError);
   },
 });
 

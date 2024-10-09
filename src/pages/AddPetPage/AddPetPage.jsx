@@ -27,7 +27,7 @@ const AddPetPage = () => {
         />
         <section className={s.formWrapper}>
           <div className={s.titleWrapper}>
-            <Title title="Add my pet /" />
+            <Title title="Add my pet /" className={s.title} />
             <p className={s.subtitle}>Personal details</p>
           </div>
           <AddPetForm />

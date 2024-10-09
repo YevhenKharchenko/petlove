@@ -18,8 +18,23 @@
 }
 
 .imgWrapper {
-  border-radius: 100px;
   padding-top: 4px;
+}
+
+.img {
+  border-radius: 100px;
+  width: 66px;
+  height: 66px;
+
+  @include media(tablet) {
+    width: 75px;
+    height: 75px;
+  }
+
+  @include media(desktop) {
+    width: 90px;
+    height: 90px;
+  }
 }
 
 .infoWrapper {

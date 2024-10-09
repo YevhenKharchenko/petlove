@@ -27,12 +27,12 @@
   border-radius: 30px;
 
   @include media(tablet) {
-    padding: 71px 140px;
+    padding: 40px 136px;
     border-radius: 60px;
   }
 
   @include media(desktop) {
-    padding: 114px 84px;
+    padding: 60px 80px;
   }
 }
 
@@ -41,6 +41,16 @@
   gap: 8px;
   align-items: end;
   margin-bottom: 24px;
+
+  @include media(tablet) {
+    margin-bottom: 40px;
+  }
+}
+
+.title {
+  @include media(tablet) {
+    font-size: 32px;
+  }
 }
 
 .subtitle {
@@ -48,4 +58,9 @@
   font-size: 14px;
   line-height: 1.28571;
   color: $subtitle-primary-text-color;
+
+  @include media(tablet) {
+    font-size: 16px;
+    line-height: 1.25;
+  }
 }

@@ -1,12 +1,25 @@
-.form {
-}
-
 .fieldset {
   padding: 0;
   margin: 0 0 8px 0;
   border: none;
   display: flex;
   gap: 8px;
+  max-height: 32px;
+
+  @include media(tablet) {
+    margin-bottom: -16px;
+    max-height: 40px;
+  }
+}
+
+.radioIcon {
+  width: 32px;
+  height: 32px;
+
+  @include media(tablet) {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .visuallyHidden {
@@ -25,12 +38,22 @@
 .imgWrapper {
   text-align: center;
   margin-bottom: 16px;
+  width: 68px;
+  height: 68px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include media(tablet) {
+    margin-bottom: 12px;
+    width: 86px;
+    height: 86px;
+  }
 }
 
 .img {
   border-radius: 100px;
-  width: 80px;
-  height: 80px;
+  width: 68px;
+  height: 68px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 12px;
@@ -47,25 +70,33 @@
 }
 
 input.pathInput {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33333;
+  letter-spacing: -0.02em;
+  color: $primary-text-color;
   padding: 13px 39px 13px 12px;
   width: 161px;
   height: 42px;
 
   @include media(tablet) {
+    font-size: 14px;
+    line-height: 1.28571;
     padding: 12px 20px 12px 12px;
-    width: 226px;
+    width: 278px;
   }
 }
 
 .uploadBtn {
+  font-weight: 500;
   font-size: 12px;
   line-height: 1.33333;
   letter-spacing: -0.02em;
   color: $secondary-text-color;
   background-color: $secondary-accent-color;
   border-radius: 30px;
-  padding: 12px;
-  max-width: 126px;
+  padding: 10px;
+  width: 126px;
   height: 42px;
   display: flex;
   justify-content: center;
@@ -74,10 +105,9 @@ input.pathInput {
 
   @include media(tablet) {
     padding: 12px 14px;
-    max-width: 146px;
+    width: 146px;
     font-size: 14px;
     line-height: 1.28571;
-    font-weight: 500;
   }
 }
 
@@ -100,8 +130,8 @@ input.input {
 
   @include media(tablet) {
     min-height: 14px;
-    margin-top: 4px;
-    margin-bottom: 8px;
+    margin-top: 2px;
+    margin-bottom: 2px;
     padding-left: 16px;
   }
 }
@@ -118,9 +148,23 @@ input.input {
   }
 }
 
+.bottomInputWrapper {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+
+  @include media(tablet) {
+    margin-bottom: 22px;
+  }
+}
+
 .dateWrapper {
   width: 144px;
   position: relative;
+
+  @include media(tablet) {
+    width: 210px;
+  }
 }
 
 .calendarIcon {
@@ -130,6 +174,13 @@ input.input {
   transform: translateY(-50%);
   fill: $primary-white-color;
   stroke: $primary-text-color;
+  width: 18px;
+  height: 18px;
+
+  @include media(tablet) {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .dateInput {
@@ -158,16 +209,31 @@ input.input {
   @include media(tablet) {
     font-size: 16px;
     line-height: 1.25;
-    width: 424px;
+    width: 210px;
     height: 52px;
     padding: 16px 76px 16px 16px;
   }
 }
 
-.bottomInputWrapper {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 14px;
+.select {
+  width: 143px;
+  height: 42px;
+  border-radius: 30px;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  box-shadow: none;
+  font-family: Manrope, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.28571;
+  color: rgba(38, 38, 38, 0.5);
+  cursor: pointer;
+
+  @include media(tablet) {
+    font-size: 16px;
+    line-height: 1.25;
+    width: 210px;
+    height: 52px;
+  }
 }
 
 .btnWrapper {
@@ -182,6 +248,11 @@ input.input {
   background-color: $grey-btn-bg-color;
   color: $primary-text-color;
 
+  @include media(tablet) {
+    width: 170px;
+    height: 48px;
+  }
+
   &:hover {
     background-color: $primary-border-color;
   }
@@ -189,4 +260,9 @@ input.input {
 
 .submitBtn {
   text-transform: none;
+
+  @include media(tablet) {
+    width: 170px;
+    height: 48px;
+  }
 }

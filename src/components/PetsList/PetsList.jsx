@@ -1,12 +1,19 @@
+import { useSelector } from 'react-redux';
+import { selectPets } from '../../redux/users/selectors.js';
 import PetsItem from '../PetsItem/PetsItem.jsx';
 import s from './PetsList.module.scss';
 
 const PetsList = () => {
+  const pets = useSelector(selectPets);
   return (
     <ul className={s.list}>
-      <PetsItem />
-      <PetsItem />
-      <PetsItem />
+      {pets.map(el => {
+        return (
+          <li key={el._id}>
+            <PetsItem item={el} />
+          </li>
+        );
+      })}
     </ul>
   );
 };
