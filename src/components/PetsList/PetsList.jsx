@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { selectPets } from '../../redux/users/selectors.js';
+import { selectPets } from '../../redux/auth/selectors.js';
 import PetsItem from '../PetsItem/PetsItem.jsx';
 import s from './PetsList.module.scss';
 

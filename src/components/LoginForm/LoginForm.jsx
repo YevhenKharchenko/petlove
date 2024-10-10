@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { loginValidationSchema } from '../../validation/validationSchema.js';
 import { checkPasswordStrength, checkEmailValidation } from '../../utils/index.js';
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../../redux/users/operations.js';
+import { loginUser } from '../../redux/auth/operations.js';
 import { useNavigate } from 'react-router-dom';
 import Input from '../../shared/components/Input/Input.jsx';
 import PasswordBtn from '../../shared/components/PasswordBtn/PasswordBtn.jsx';

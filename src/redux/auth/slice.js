@@ -7,7 +7,7 @@ import {
   updateUser,
   addPet,
   removePet,
-} from './operations';
+} from './operations.js';
 import { handleError, handleRefreshing } from '../../utils/index.js';
 
 const authSlice = createSlice({

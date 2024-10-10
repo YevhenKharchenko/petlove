@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { logoutUser } from '../../redux/users/operations.js';
+import { logoutUser } from '../../redux/auth/operations.js';
 import { catImg, catImg2x } from '../../assets/images/index.js';
 import CloseBtn from '../CloseBtn/CloseBtn.jsx';
 import Button from '../../shared/components/Button/Button.jsx';

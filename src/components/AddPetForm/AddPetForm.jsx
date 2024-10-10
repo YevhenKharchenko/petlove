@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRef, useState } from 'react';
 import { addPetValidationSchema } from '../../validation/validationSchema.js';
-import { addPet } from '../../redux/users/operations.js';
+import { addPet } from '../../redux/auth/operations.js';
 import { speciesOptions } from '../../constants/selectOptions.js';
 import { selectStyles } from '../../constants/selectStyles.js';
 import { REGEX } from '../../constants/index.js';

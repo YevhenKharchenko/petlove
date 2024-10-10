@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import { sprite } from '../../assets/icons/index.js';
 import { useSelector } from 'react-redux';
-import { selectUsername } from '../../redux/users/selectors.js';
+import { selectUsername } from '../../redux/auth/selectors.js';
 import s from './UserBar.module.scss';
 
 const UserBar = ({ isTablet, isHomePage }) => {

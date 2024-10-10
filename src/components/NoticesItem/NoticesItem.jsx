@@ -1,8 +1,17 @@
+import { useDispatch } from 'react-redux';
+import LearnMoreBtn from '../LearnMoreBtn/LearnMoreBtn.jsx';
 import { sprite } from '../../assets/icons/index.js';
-import Button from '../../shared/components/Button/Button.jsx';
 import s from './NoticesItem.module.scss';
+import { removePetFromFavorites } from '../../redux/notices/operations.js';
+import { getCurrentUserFull } from '../../redux/auth/operations.js';
 
 const NoticesItem = ({ item, isFavorites = true }) => {
+  const dispatch = useDispatch();
+  const handleRemoveBtnClick = async id => {
+    await dispatch(removePetFromFavorites(id));
+    await dispatch(getCurrentUserFull());
+  };
+
   return (
     <div className={s.item}>
       <div className={s.imgWrapper}>
@@ -15,7 +24,7 @@ const NoticesItem = ({ item, isFavorites = true }) => {
             <svg className={s.icon} width="16" height="16">
               <use xlinkHref={`${sprite}#icon-star`}></use>
             </svg>
-            <span className={s.rating}>4</span>
+            <span className={s.rating}>{Number(item.popularity / 1000).toFixed(0)}</span>
           </div>
         </div>
         <ul className={s.characteristicsList}>
@@ -42,9 +51,9 @@ const NoticesItem = ({ item, isFavorites = true }) => {
         </ul>
         <p className={s.text}>{item.comment}</p>
         <div className={s.btnWrapper}>
-          <Button title="Learn more" className={s.learnBtn} />
+          <LearnMoreBtn id={item._id} />
           {isFavorites && (
-            <button className={s.deleteBtn}>
+            <button className={s.deleteBtn} onClick={() => handleRemoveBtnClick(item._id)}>
               <svg className={s.icon} width="44" height="44">
                 <use xlinkHref={`${sprite}#icon-delete`}></use>
               </svg>

@@ -53,6 +53,7 @@ export const logoutUser = createAsyncThunk('auth/logout', async (_, thunkAPI) =>
 export const getCurrentUserFull = createAsyncThunk('auth/getCurrent', async (_, thunkAPI) => {
   try {
     const { data } = await instance.get('/users/current/full');
+    console.log(data);
 
     return data;
   } catch (e) {

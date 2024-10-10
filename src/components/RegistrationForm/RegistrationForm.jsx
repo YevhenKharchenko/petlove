@@ -9,7 +9,7 @@ import {
   checkUsernameValidation,
   checkPasswordMatch,
 } from '../../utils/index.js';
-import { registerUser } from '../../redux/users/operations.js';
+import { registerUser } from '../../redux/auth/operations.js';
 import { useNavigate } from 'react-router-dom';
 import Input from '../../shared/components/Input/Input.jsx';
 import PasswordBtn from '../../shared/components/PasswordBtn/PasswordBtn.jsx';

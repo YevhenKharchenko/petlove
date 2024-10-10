@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { store } from '../redux/store.js';
-import { logout } from '../redux/users/slice.js';
+import { logout } from '../redux/auth/slice.js';
 
 export const instance = axios.create({
   baseURL: 'https://petlove.b.goit.study/api',

@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { removePet } from '../../redux/users/operations.js';
+import { removePet } from '../../redux/auth/operations.js';
 import { sprite } from '../../assets/icons/index.js';
 import s from './PetsItem.module.scss';
 

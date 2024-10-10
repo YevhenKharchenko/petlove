@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { selectFavorites, selectViews } from '../../redux/users/selectors.js';
+import { selectFavorites, selectViews } from '../../redux/auth/selectors.js';
 import Button from '../../shared/components/Button/Button.jsx';
 import Container from '../../shared/components/Container/Container.jsx';
 import NoticesItem from '../NoticesItem/NoticesItem.jsx';

@@ -6,7 +6,7 @@ import {
   selectEmail,
   selectPhone,
   selectUsername,
-} from '../../redux/users/selectors.js';
+} from '../../redux/auth/selectors.js';
 import { sprite } from '../../assets/icons/index.js';
 import ModalEditUser from '../ModalEditUser/ModalEditUser.jsx';
 import s from './UserBlock.module.scss';

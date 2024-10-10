@@ -1,0 +1,176 @@
+.backdrop {
+  padding: 40px 28px;
+  background-color: $primary-white-color;
+  position: relative;
+  border-radius: 30px;
+  max-width: 335px;
+
+  @include media(tablet) {
+    padding: 40px 72px;
+    max-width: 473px;
+  }
+}
+
+.imgWrapper {
+  position: relative;
+  margin-bottom: 20px;
+  width: 120px;
+  height: 120px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include media(tablet) {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 16px;
+  }
+}
+
+.category {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 30px;
+  padding: 8px 14px;
+  font-size: 12px;
+  line-height: 1.33333;
+  letter-spacing: -0.02em;
+  color: $primary-accent-color;
+  background-color: $secondary-accent-color;
+
+  @include media(tablet) {
+    font-size: 14px;
+    line-height: 1.28571;
+  }
+}
+
+.img {
+  border-radius: 100px;
+  width: 120px;
+  height: 120px;
+
+  @include media(tablet) {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  margin-bottom: 10px;
+  color: $secondary-text-color;
+  text-align: center;
+
+  @include media(tablet) {
+    font-size: 18px;
+    line-height: 1.33333;
+  }
+}
+
+.ratingWrapper {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
+
+  @include media(tablet) {
+    margin-bottom: 20px;
+  }
+}
+
+.star {
+}
+
+.rating {
+  font-size: 14px;
+  line-height: 1.42857;
+  color: $secondary-text-color;
+}
+
+.characteristicsList {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 27px;
+  margin-bottom: 18px;
+
+  @include media(tablet) {
+    margin-bottom: 18px;
+  }
+}
+
+.listItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.itemTitle {
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: $primary-placeholder-color;
+}
+
+.itemText {
+  font-size: 12px;
+  line-height: 1.16667;
+  letter-spacing: -0.02em;
+}
+
+.comment {
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.02em;
+  color: $secondary-text-color;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.btnWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn {
+  text-transform: none;
+  width: 135px;
+  height: 44px;
+  font-weight: 500;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include media(tablet) {
+    width: 160px;
+    height: 48px;
+  }
+}
+
+.addBtn {
+  composes: btn;
+  padding: 12px 30px;
+
+  @include media(tablet) {
+    padding: 14px 43px;
+  }
+}
+
+.contactBtn {
+  composes: btn;
+  background-color: $secondary-accent-color;
+  color: $primary-accent-color;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  border-radius: 30px;
+  padding: 12px 37px;
+
+  @include media(tablet) {
+    padding: 14px 50px;
+  }
+}

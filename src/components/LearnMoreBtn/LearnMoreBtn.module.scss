@@ -1,0 +1,22 @@
+.learnBtn {
+  text-transform: none;
+  flex-grow: 1;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.28571;
+  padding: 13px;
+  max-width: 233px;
+  height: 44px;
+
+  @include media(tablet) {
+    font-size: 16px;
+    line-height: 1.25;
+    max-width: 260px;
+  }
+
+  @include media(desktop) {
+    font-size: 16px;
+    line-height: 1.25;
+    max-width: 238px;
+  }
+}

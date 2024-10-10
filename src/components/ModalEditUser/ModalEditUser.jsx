@@ -2,14 +2,14 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRef, useState } from 'react';
-import { updateUser } from '../../redux/users/operations.js';
+import { updateUser } from '../../redux/auth/operations.js';
 import { userProfileValidationSchema } from '../../validation/validationSchema.js';
 import {
   selectAvatar,
   selectEmail,
   selectPhone,
   selectUsername,
-} from '../../redux/users/selectors.js';
+} from '../../redux/auth/selectors.js';
 import { REGEX } from '../../constants/index.js';
 import { sprite } from '../../assets/icons/index.js';
 import CloseBtn from '../CloseBtn/CloseBtn.jsx';

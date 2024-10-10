@@ -3,7 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import { selectIsLoggedIn } from '../../redux/users/selectors.js';
+import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
 import { BREAKPOINT } from '../../constants/index.js';
 import BurgerMenu from '../BurgerMenu/BurgerMenu.jsx';
 import Logo from '../Logo/Logo.jsx';
