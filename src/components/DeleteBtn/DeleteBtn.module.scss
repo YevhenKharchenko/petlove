@@ -1,0 +1,11 @@
+.deleteBtn {
+  border-radius: 30px;
+  padding: 14px;
+  width: 46px;
+  height: 46px;
+  background-color: $secondary-accent-color;
+
+  &:hover {
+    background-color: $secondary-hover-accent-color;
+  }
+}

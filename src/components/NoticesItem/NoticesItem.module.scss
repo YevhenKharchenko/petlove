@@ -1,5 +1,5 @@
 .item {
-  width: 335px;
+  max-width: 335px;
   border-radius: 16px;
   background-color: $primary-white-color;
   padding: 24px;
@@ -10,12 +10,13 @@
   gap: 24px;
 
   @include media(tablet) {
+    max-width: 342px;
     width: 342px;
-    padding: 14px 14px 18px 14px;
     gap: 14px;
   }
 
   @include media(desktop) {
+    max-width: 320px;
     width: 320px;
   }
 }
@@ -29,10 +30,19 @@
   border-radius: 16px;
   overflow: hidden;
   object-fit: cover;
+  width: 287px;
+  height: 178px;
+  margin-left: auto;
+  margin-right: auto;
 
   @include media(tablet) {
-    width: 314px;
-    height: 162px;
+    width: 294px;
+    height: 178px;
+  }
+
+  @include media(desktop) {
+    width: 315px;
+    height: 178px;
   }
 }
 
@@ -48,6 +58,9 @@
   font-size: 16px;
   line-height: 1.25;
   color: $secondary-text-color;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   @include media(tablet) {
     font-size: 18px;
@@ -70,9 +83,11 @@
 
 .characteristicsList {
   display: flex;
-  flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   @include media(tablet) {
     gap: 16px;
@@ -108,6 +123,9 @@
   font-size: 12px;
   line-height: 1.16667;
   letter-spacing: -0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .text {
@@ -115,10 +133,15 @@
   line-height: 1.28571;
   letter-spacing: -0.02em;
   color: $secondary-text-color;
-  margin-bottom: 24px;
+  margin-bottom: 42px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .btnWrapper {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
 }

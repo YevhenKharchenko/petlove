@@ -23,7 +23,7 @@ const ModalNotice = ({ closeModal }) => {
       await dispatch(addPetToFavorites(id));
     }
 
-    dispatch(getCurrentUser());
+    await dispatch(getCurrentUser());
   };
 
   return (

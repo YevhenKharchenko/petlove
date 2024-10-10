@@ -1,17 +1,14 @@
-import { useDispatch } from 'react-redux';
-import { removePetFromFavorites } from '../../redux/notices/operations.js';
-import { getCurrentUser } from '../../redux/auth/operations.js';
-import { sprite } from '../../assets/icons/index.js';
+import { useSelector } from 'react-redux';
+import { selectIsFavorite } from '../../redux/auth/selectors.js';
 import LearnMoreBtn from '../LearnMoreBtn/LearnMoreBtn.jsx';
 import Star from '../../shared/components/Star/Star.jsx';
+import LikeBtn from '../LikeBtn/LikeBtn.jsx';
+import DeleteBtn from '../DeleteBtn/DeleteBtn.jsx';
 import s from './NoticesItem.module.scss';
 
-const NoticesItem = ({ item, isFavorites = true }) => {
-  const dispatch = useDispatch();
-  const handleRemoveBtnClick = async id => {
-    await dispatch(removePetFromFavorites(id));
-    await dispatch(getCurrentUser());
-  };
+const NoticesItem = ({ item }) => {
+  const isFavoriteSelector = selectIsFavorite(item._id);
+  const isFavorite = useSelector(isFavoriteSelector);
 
   return (
     <div className={s.item}>
@@ -51,13 +48,7 @@ const NoticesItem = ({ item, isFavorites = true }) => {
         <p className={s.text}>{item.comment}</p>
         <div className={s.btnWrapper}>
           <LearnMoreBtn id={item._id} />
-          {isFavorites && (
-            <button className={s.deleteBtn} onClick={() => handleRemoveBtnClick(item._id)}>
-              <svg className={s.icon} width="44" height="44">
-                <use xlinkHref={`${sprite}#icon-delete`}></use>
-              </svg>
-            </button>
-          )}
+          {isFavorite ? <DeleteBtn id={item._id} /> : <LikeBtn id={item._id} />}
         </div>
       </div>
     </div>
