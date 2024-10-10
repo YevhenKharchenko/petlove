@@ -7,13 +7,14 @@ const PetsList = () => {
   const pets = useSelector(selectPets);
   return (
     <ul className={s.list}>
-      {pets.map(el => {
-        return (
-          <li key={el._id}>
-            <PetsItem item={el} />
-          </li>
-        );
-      })}
+      {Array.isArray(pets) &&
+        pets.map(el => {
+          return (
+            <li key={el._id}>
+              <PetsItem item={el} />
+            </li>
+          );
+        })}
     </ul>
   );
 };

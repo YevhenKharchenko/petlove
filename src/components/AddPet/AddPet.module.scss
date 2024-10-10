@@ -13,6 +13,11 @@
   justify-content: center;
   align-items: center;
   gap: 4px;
+  transition: all $animation-duration $animation-time-function;
+
+  &:hover {
+    background-color: $primary-hover-accent-color;
+  }
 
   @include media(tablet) {
     padding: 10px 20px;

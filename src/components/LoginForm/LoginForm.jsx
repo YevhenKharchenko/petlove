@@ -39,7 +39,6 @@ const LoginForm = () => {
   }, [password, email]);
 
   const onSubmit = async ({ email, password }) => {
-    console.log({ email, password });
     await dispatch(loginUser({ email, password }));
     reset();
     setIsEmailValid(false);

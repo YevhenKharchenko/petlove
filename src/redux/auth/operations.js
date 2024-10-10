@@ -4,8 +4,6 @@ import { instance } from '../../api/index.js';
 
 export const registerUser = createAsyncThunk('auth/register', async (credentials, thunkAPI) => {
   try {
-    console.log(credentials);
-
     const { data } = await instance.post('/users/signup', credentials);
     toast.success(`Congratulations! You have successfully registered.`);
 
@@ -19,8 +17,6 @@ export const registerUser = createAsyncThunk('auth/register', async (credentials
 });
 
 export const loginUser = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
-  console.log(credentials);
-
   try {
     const { data } = await instance.post('/users/signin', credentials);
     toast.success(`You have successfully logged in.`);
@@ -50,9 +46,26 @@ export const logoutUser = createAsyncThunk('auth/logout', async (_, thunkAPI) =>
   }
 });
 
-export const getCurrentUserFull = createAsyncThunk('auth/getCurrent', async (_, thunkAPI) => {
+export const getCurrentUserFull = createAsyncThunk(
+  'auth/getCurrentUserFull',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await instance.get('/users/current/full');
+      console.log(data);
+
+      return data;
+    } catch (e) {
+      toast.error(
+        `Oops! Something went wrong. Please try again later or contact support. Error details: ${e.message}`
+      );
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const getCurrentUser = createAsyncThunk('auth/getCurrentUser', async (_, thunkAPI) => {
   try {
-    const { data } = await instance.get('/users/current/full');
+    const { data } = await instance.get('/users/current');
     console.log(data);
 
     return data;

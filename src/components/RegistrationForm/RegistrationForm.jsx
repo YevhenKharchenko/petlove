@@ -53,7 +53,6 @@ const RegistrationForm = () => {
   const onSubmit = async ({ name, email, password }) => {
     if (!isPasswordMatch) return;
 
-    console.log({ name, email, password });
     await dispatch(registerUser({ name, email, password }));
     reset();
     setIsPasswordSecure(false);

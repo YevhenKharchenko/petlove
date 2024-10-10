@@ -1,29 +1,29 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPet } from '../../redux/notices/selectors.js';
-import CloseBtn from '../CloseBtn/CloseBtn.jsx';
-import { sprite } from '../../assets/icons/index.js';
-import s from './ModalNotice.module.scss';
-import Button from '../../shared/components/Button/Button.jsx';
 import { addPetToFavorites, removePetFromFavorites } from '../../redux/notices/operations.js';
-import { getCurrentUserFull } from '../../redux/auth/operations.js';
+import { getCurrentUser } from '../../redux/auth/operations.js';
 import { selectIsFavorite } from '../../redux/auth/selectors.js';
+import CloseBtn from '../CloseBtn/CloseBtn.jsx';
+import Button from '../../shared/components/Button/Button.jsx';
+import Star from '../../shared/components/Star/Star.jsx';
+import s from './ModalNotice.module.scss';
 
 const ModalNotice = ({ closeModal }) => {
   const dispatch = useDispatch();
   const pet = useSelector(selectPet);
   const isFavoriteSelector = selectIsFavorite(pet._id);
   const isFavorite = useSelector(isFavoriteSelector);
-  console.log(pet);
-  console.log(isFavorite);
+  const popularity = Number(pet.popularity / 1000).toFixed(0);
+  const rating = popularity > 5 ? 5 : popularity;
 
   const handleAddBtnClick = async id => {
     if (isFavorite) {
       await dispatch(removePetFromFavorites(id));
-      await dispatch(getCurrentUserFull());
     } else {
       await dispatch(addPetToFavorites(id));
-      await dispatch(getCurrentUserFull());
     }
+
+    dispatch(getCurrentUser());
   };
 
   return (
@@ -35,10 +35,17 @@ const ModalNotice = ({ closeModal }) => {
       </div>
       <h2 className={s.title}>{pet.title}</h2>
       <div className={s.ratingWrapper}>
-        <svg className={s.star} width="16" height="16">
-          <use xlinkHref={`${sprite}#icon-star`}></use>
-        </svg>
-        <p className={s.rating}>{Number(pet.popularity / 1000).toFixed(0)}</p>
+        {Array.from({ length: rating }, (_, idx) => (
+          <div key={idx}>
+            <Star />
+          </div>
+        ))}
+        {Array.from({ length: 5 - rating }, (_, idx) => (
+          <div key={idx}>
+            <Star isGrey={true} />
+          </div>
+        ))}
+        <p className={s.rating}>{rating}</p>
       </div>
       <ul className={s.characteristicsList}>
         <li className={s.listItem}>

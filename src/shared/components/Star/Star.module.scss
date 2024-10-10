@@ -1,0 +1,15 @@
+.iconWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.star {
+  fill: #ffc531;
+  stroke: #ffc531;
+}
+
+.grey {
+  fill: $grey-btn-bg-color;
+  stroke: $grey-btn-bg-color;
+}

@@ -49,3 +49,16 @@ export const removePetFromFavorites = createAsyncThunk(
     }
   }
 );
+
+export const getNotices = createAsyncThunk('notices/getNotices', async (_, thunkAPI) => {
+  try {
+    const { data } = await instance.get('/notices');
+
+    return data;
+  } catch (e) {
+    toast.error(
+      `Oops! Something went wrong. Please try again later or contact support. Error details: ${e.message}`
+    );
+    return thunkAPI.rejectWithValue(e.message);
+  }
+});

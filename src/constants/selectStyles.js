@@ -12,6 +12,10 @@ export const selectStyles = {
     lineHeight: '1.28571',
     color: 'rgba(38, 38, 38, 0.5)',
     cursor: 'pointer',
+    transition: 'border-color 0.5s ease',
+    '&:hover': {
+      border: '1px solid #f6b83d',
+    },
     '@media only screen and (min-width: 768px)': {
       width: '210px',
       height: '52px',

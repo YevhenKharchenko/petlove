@@ -7,6 +7,7 @@ import {
   updateUser,
   addPet,
   removePet,
+  getCurrentUser,
 } from './operations.js';
 import { handleError, handleRefreshing } from '../../utils/index.js';
 
@@ -87,6 +88,13 @@ const authSlice = createSlice({
         state.views = action.payload.noticesViewed;
       })
       .addCase(getCurrentUserFull.rejected, handleError)
+      .addCase(getCurrentUser.pending, handleRefreshing)
+      .addCase(getCurrentUser.fulfilled, (state, action) => {
+        state.isRefreshing = false;
+        state.error = null;
+        state.favorites = action.payload.noticesFavorites;
+      })
+      .addCase(getCurrentUser.rejected, handleError)
       .addCase(updateUser.pending, handleRefreshing)
       .addCase(updateUser.fulfilled, (state, action) => {
         state.isRefreshing = false;

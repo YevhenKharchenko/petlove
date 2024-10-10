@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { store } from '../redux/store.js';
 import { logout } from '../redux/auth/slice.js';
+import { toast } from 'react-toastify';
 
 export const instance = axios.create({
   baseURL: 'https://petlove.b.goit.study/api',
@@ -23,7 +24,7 @@ instance.interceptors.response.use(
   },
   error => {
     if (error.response && error.response.status === 401) {
-      console.error('Unauthorized, logging out...');
+      toast.error('Unauthorized, logging out...');
       store.dispatch(logout());
     }
     return Promise.reject(error);

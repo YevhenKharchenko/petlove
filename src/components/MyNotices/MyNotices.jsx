@@ -10,11 +10,13 @@ import s from './MyNotices.module.scss';
 const MyNotices = () => {
   const favorites = useSelector(selectFavorites);
   const views = useSelector(selectViews);
-  const [option, setOption] = useState([]);
+  const [option, setOption] = useState('favorites');
+
+  const selectedArray = option === 'favorites' ? favorites : views;
 
   useEffect(() => {
-    setOption(favorites);
-  }, [favorites]);
+    setOption('favorites');
+  }, []);
 
   return (
     <section className={s.section}>
@@ -22,27 +24,28 @@ const MyNotices = () => {
         <div className={s.btnWrapper}>
           <Button
             title="My favorite pets"
-            className={clsx(s.btn, option === favorites && s.option)}
+            className={clsx(s.btn, option === 'favorites' && s.option)}
             onClick={() => {
-              setOption(favorites);
+              setOption('favorites');
             }}
           />
           <Button
             title="Viewed"
-            className={clsx(s.btn, option === views && s.option)}
+            className={clsx(s.btn, option === 'views' && s.option)}
             onClick={() => {
-              setOption(views);
+              setOption('views');
             }}
           />
         </div>
         <ul className={s.list}>
-          {option.map(el => (
-            <li key={el._id}>
-              <NoticesItem item={el} isFavorites={option === favorites} />
-            </li>
-          ))}
+          {Array.isArray(selectedArray) &&
+            selectedArray.map(el => (
+              <li key={el._id}>
+                <NoticesItem item={el} isFavorites={option === 'favorites'} />
+              </li>
+            ))}
         </ul>
-        {!option.length && (
+        {Array.isArray(selectedArray) && !selectedArray.length && (
           <p className={s.textEmpty}>
             Oops, <span className={s.span}>looks like there aren&apos;t any furries</span> on our
             adorable page yet. Do not worry! View your pets on the &quot;find your favorite
