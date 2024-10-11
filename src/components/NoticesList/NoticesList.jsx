@@ -18,7 +18,7 @@ const NoticesList = () => {
       {Array.isArray(notices) &&
         notices.map(item => (
           <li key={item._id}>
-            <NoticesItem item={item} />
+            <NoticesItem item={item} isNotices={true} />
           </li>
         ))}
     </ul>

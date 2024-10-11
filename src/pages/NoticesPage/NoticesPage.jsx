@@ -8,7 +8,7 @@ const NoticesPage = () => {
   return (
     <main className={s.main}>
       <Container>
-        <section>
+        <section className={s.section}>
           <Title title="Find your favorite pet" />
           <NoticesFilters />
           <NoticesList />

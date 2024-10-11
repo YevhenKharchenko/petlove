@@ -63,21 +63,21 @@ const AddPetForm = () => {
   return (
     <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
       <fieldset className={s.fieldset}>
-        <label>
+        <label className={s.femaleLabel}>
           <input type="radio" className={s.visuallyHidden} {...register('sex')} value="female" />
-          <svg className={s.radioIcon} width="32" height="32">
+          <svg className={s.femaleIcon} width="32" height="32">
             <use xlinkHref={`${sprite}#icon-female`}></use>
           </svg>
         </label>
-        <label>
+        <label className={s.maleLabel}>
           <input type="radio" className={s.visuallyHidden} {...register('sex')} value="male" />
-          <svg className={s.radioIcon} width="32" height="32">
+          <svg className={s.maleIcon} width="32" height="32">
             <use xlinkHref={`${sprite}#icon-male`}></use>
           </svg>
         </label>
-        <label>
+        <label className={s.multipleLabel}>
           <input type="radio" className={s.visuallyHidden} {...register('sex')} value="multiple" />
-          <svg className={s.radioIcon} width="32" height="32">
+          <svg className={s.multipleIcon} width="32" height="32">
             <use xlinkHref={`${sprite}#icon-multiple`}></use>
           </svg>
         </label>
@@ -148,7 +148,7 @@ const AddPetForm = () => {
                 <DatePicker
                   id="date-input"
                   className={s.dateInput}
-                  placeholderText=""
+                  placeholderText="Birthday"
                   selected={value ? parseISO(value) : null}
                   onChange={date => {
                     if (date) {
@@ -180,6 +180,7 @@ const AddPetForm = () => {
                 <Select
                   inputRef={ref}
                   id="species-select"
+                  placeholder="Category"
                   styles={selectStyles}
                   options={speciesOptions}
                   value={speciesOptions.find(option => option.value === value)}

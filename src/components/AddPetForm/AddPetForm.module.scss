@@ -12,14 +12,94 @@
   }
 }
 
-.radioIcon {
+.radioLabel {
   width: 32px;
   height: 32px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all $animation-duration $animation-time-function;
+
+  &:hover > .radioIcon {
+    stroke: $primary-white-color;
+  }
 
   @include media(tablet) {
     width: 40px;
     height: 40px;
   }
+}
+
+.femaleLabel {
+  composes: radioLabel;
+  background-color: rgba(244, 63, 94, 0.1);
+
+  &:hover {
+    background-color: #f43f5e;
+  }
+
+  &:has(input:checked) {
+    background-color: #f43f5e;
+  }
+}
+
+.maleLabel {
+  composes: radioLabel;
+  background-color: rgba(84, 173, 255, 0.1);
+
+  &:hover {
+    background-color: #54adff;
+  }
+
+  &:has(input:checked) {
+    background-color: #54adff;
+  }
+}
+
+.multipleLabel {
+  composes: radioLabel;
+  background: $secondary-accent-color;
+
+  &:hover {
+    background-color: $primary-accent-color;
+  }
+
+  &:has(input:checked) {
+    background-color: $primary-accent-color;
+  }
+}
+
+.radioIcon {
+  width: 20px;
+  height: 20px;
+  transition: all $animation-duration $animation-time-function;
+
+  @include media(tablet) {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.femaleIcon {
+  composes: radioIcon;
+  stroke: #f43f5e;
+  fill: none;
+}
+
+.maleIcon {
+  composes: radioIcon;
+  stroke: #54adff;
+  fill: none;
+}
+
+.multipleIcon {
+  composes: radioIcon;
+}
+
+input:checked ~ .radioIcon {
+  stroke: $primary-white-color;
 }
 
 .visuallyHidden {

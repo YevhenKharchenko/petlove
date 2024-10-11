@@ -4,8 +4,18 @@
   width: 46px;
   height: 46px;
   background-color: $secondary-accent-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
     background-color: $secondary-hover-accent-color;
+  }
+}
+
+.noticesLikeBtn {
+  @include media(desktop) {
+    width: 48px;
+    height: 48px;
   }
 }

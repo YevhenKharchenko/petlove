@@ -2,3 +2,10 @@
   padding-top: 50px;
   padding-bottom: 80px;
 }
+
+.section {
+  @include media(desktop) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}

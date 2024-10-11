@@ -7,10 +7,10 @@
   @include media(tablet) {
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
-  @include media(tablet) {
-    gap: 40px 32px;
-    justify-content: space-between;
+  @include media(desktop) {
+    gap: 40px 31px;
   }
 }
