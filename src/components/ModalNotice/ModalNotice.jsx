@@ -3,6 +3,8 @@ import { selectPet } from '../../redux/notices/selectors.js';
 import { addPetToFavorites, removePetFromFavorites } from '../../redux/notices/operations.js';
 import { getCurrentUser } from '../../redux/auth/operations.js';
 import { selectIsFavorite } from '../../redux/auth/selectors.js';
+import { convertPopularityRating } from '../../utils/index.js';
+import { MAX_RATING } from '../../constants/index.js';
 import CloseBtn from '../CloseBtn/CloseBtn.jsx';
 import Button from '../../shared/components/Button/Button.jsx';
 import Star from '../../shared/components/Star/Star.jsx';
@@ -13,8 +15,8 @@ const ModalNotice = ({ closeModal }) => {
   const pet = useSelector(selectPet);
   const isFavoriteSelector = selectIsFavorite(pet._id);
   const isFavorite = useSelector(isFavoriteSelector);
-  const popularity = Number(pet.popularity / 1000).toFixed(0);
-  const rating = popularity > 5 ? 5 : popularity;
+  const popularity = convertPopularityRating(pet.popularity);
+  const rating = popularity > MAX_RATING ? MAX_RATING : popularity;
 
   const handleAddBtnClick = async id => {
     if (isFavorite) {
@@ -40,7 +42,7 @@ const ModalNotice = ({ closeModal }) => {
             <Star />
           </div>
         ))}
-        {Array.from({ length: 5 - rating }, (_, idx) => (
+        {Array.from({ length: MAX_RATING - rating }, (_, idx) => (
           <div key={idx}>
             <Star isGrey={true} />
           </div>

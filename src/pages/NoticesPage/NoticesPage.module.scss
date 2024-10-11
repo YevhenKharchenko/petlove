@@ -3,9 +3,9 @@
   padding-bottom: 80px;
 }
 
-.section {
+.noticesContainer {
   @include media(desktop) {
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 64px;
+    padding-right: 64px;
   }
 }

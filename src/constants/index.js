@@ -9,3 +9,5 @@ export const REGEX = {
   PHONE: /^\+38\d{10}$/,
   BIRTHDAY: /^\d{4}-\d{2}-\d{2}$/,
 };
+
+export const MAX_RATING = 5;

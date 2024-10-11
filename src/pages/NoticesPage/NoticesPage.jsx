@@ -7,13 +7,13 @@ import s from './NoticesPage.module.scss';
 const NoticesPage = () => {
   return (
     <main className={s.main}>
-      <Container>
-        <section className={s.section}>
+      <section className={s.section}>
+        <Container className={s.noticesContainer}>
           <Title title="Find your favorite pet" />
           <NoticesFilters />
           <NoticesList />
-        </section>
-      </Container>
+        </Container>
+      </section>
     </main>
   );
 };

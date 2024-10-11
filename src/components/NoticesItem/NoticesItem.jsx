@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 import { selectIsFavorite } from '../../redux/auth/selectors.js';
+import { convertPopularityRating } from '../../utils/index.js';
 import LearnMoreBtn from '../LearnMoreBtn/LearnMoreBtn.jsx';
 import Star from '../../shared/components/Star/Star.jsx';
 import LikeBtn from '../LikeBtn/LikeBtn.jsx';
@@ -27,7 +28,7 @@ const NoticesItem = ({ item, isNotices }) => {
           <h2 className={s.title}>{item.title}</h2>
           <div className={s.ratingWrapper}>
             <Star />
-            <span className={s.rating}>{Number(item.popularity / 1000).toFixed(0)}</span>
+            <span className={s.rating}>{convertPopularityRating(item.popularity)}</span>
           </div>
         </div>
         <ul className={s.characteristicsList}>

@@ -29,7 +29,7 @@ const authSlice = createSlice({
     error: null,
   },
   reducers: {
-    logout(state) {
+    logoutOnClient(state) {
       state.isRefreshing = false;
       state.isLoggedIn = false;
       state.error = null;
@@ -128,6 +128,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout } = authSlice.actions;
+export const { logoutOnClient } = authSlice.actions;
 
 export const authReducer = authSlice.reducer;
