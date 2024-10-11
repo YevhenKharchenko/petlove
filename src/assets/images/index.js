@@ -32,6 +32,8 @@ export { default as registerImgDesk } from './register-desk.webp';
 export { default as registerImgDesk2x } from './register-desk@2x.webp';
 export { default as catImg } from './cat.webp';
 export { default as catImg2x } from './cat@2x.webp';
+export { default as dogImg } from './dog.webp';
+export { default as dogImg2x } from './dog@2x.webp';
 export { default as addPetImg } from './add-pet.webp';
 export { default as addPetImg2x } from './add-pet@2x.webp';
 export { default as addPetImgTab } from './add-pet-tab.webp';

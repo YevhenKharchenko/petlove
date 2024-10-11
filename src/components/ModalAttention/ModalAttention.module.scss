@@ -1,0 +1,92 @@
+.container {
+  border-radius: 30px;
+  background-color: $primary-white-color;
+  padding: 40px 20px;
+  position: relative;
+  max-width: 335px;
+
+  @include media(tablet) {
+    padding: 60px;
+    max-width: 466px;
+  }
+}
+
+.img {
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: $primary-accent-color;
+  margin-bottom: 20px;
+  text-align: center;
+
+  @include media(tablet) {
+    font-size: 24px;
+    line-height: 1.16667;
+  }
+}
+
+.text {
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: $secondary-text-color;
+  margin-bottom: 24px;
+
+  @include media(tablet) {
+    margin-bottom: 28px;
+  }
+}
+
+.btnWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn {
+  height: 42px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.28571;
+  letter-spacing: -0.03em;
+
+  @include media(tablet) {
+    font-size: 16px;
+    height: 48px;
+  }
+}
+
+.loginBtn {
+  composes: btn;
+  padding: 12px 48px;
+  color: $primary-white-color;
+  background-color: $primary-accent-color;
+
+  &:hover {
+    background-color: $primary-hover-accent-color;
+  }
+}
+
+.registerBtn {
+  composes: btn;
+  padding: 12px 24px;
+  background-color: $secondary-accent-color;
+  color: $primary-accent-color;
+
+  &:hover {
+    background-color: $secondary-hover-accent-color;
+  }
+}
