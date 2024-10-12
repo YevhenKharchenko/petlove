@@ -6,12 +6,13 @@ const noticesSlice = createSlice({
   name: 'notices',
   initialState: {
     notices: [],
+    currentPage: 1,
+    totalPages: null,
     pet: null,
     isLoggedIn: false,
     isRefreshing: false,
     error: null,
   },
-  reducers: {},
   extraReducers: builder => {
     builder
       .addCase(getPetById.pending, handleRefreshing)
@@ -39,12 +40,10 @@ const noticesSlice = createSlice({
         state.isRefreshing = false;
         state.error = null;
         state.notices = action.payload.results;
-        console.log(action.payload);
+        state.totalPages = action.payload.totalPages;
       })
       .addCase(getNotices.rejected, handleError);
   },
 });
-
-export const { logout } = noticesSlice.actions;
 
 export const noticesReducer = noticesSlice.reducer;

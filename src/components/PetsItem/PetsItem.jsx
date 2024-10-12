@@ -19,8 +19,8 @@ const PetsItem = ({ item }) => {
         <div className={s.titleWrapper}>
           <h2 className={s.title}>{item.title}</h2>
           <button className={s.deleteBtn} onClick={() => handleDeleteBtnClick(item)}>
-            <svg className={s.icon} width="30" height="30">
-              <use xlinkHref={`${sprite}#icon-delete`}></use>
+            <svg className={s.icon} width="16" height="16">
+              <use xlinkHref={`${sprite}#icon-trash`}></use>
             </svg>
           </button>
         </div>

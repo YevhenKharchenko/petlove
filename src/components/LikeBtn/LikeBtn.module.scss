@@ -7,10 +7,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all $animation-duration $animation-time-function;
 
   &:hover {
     background-color: $secondary-hover-accent-color;
   }
+}
+
+.icon {
+  stroke: $primary-accent-color;
 }
 
 .noticesLikeBtn {

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 import { selectIsFavorite } from '../../redux/auth/selectors.js';
-import { convertPopularityRating } from '../../utils/index.js';
+import { capitalizeFirstLetter, convertPopularityRating } from '../../utils/index.js';
 import LearnMoreBtn from '../LearnMoreBtn/LearnMoreBtn.jsx';
 import Star from '../../shared/components/Star/Star.jsx';
 import LikeBtn from '../LikeBtn/LikeBtn.jsx';
@@ -42,15 +42,15 @@ const NoticesItem = ({ item, isNotices }) => {
           </li>
           <li className={s.listItem}>
             <h3 className={s.itemTitle}>Sex</h3>
-            <p className={s.itemText}>{item.sex}</p>
+            <p className={s.itemText}>{capitalizeFirstLetter(item.sex)}</p>
           </li>
           <li className={s.listItem}>
             <h3 className={s.itemTitle}>Species</h3>
-            <p className={s.itemText}>{item.species}</p>
+            <p className={s.itemText}>{capitalizeFirstLetter(item.species)}</p>
           </li>
           <li className={s.listItem}>
             <h3 className={s.itemTitle}>Category</h3>
-            <p className={s.itemText}>{item.category}</p>
+            <p className={s.itemText}>{capitalizeFirstLetter(item.category)}</p>
           </li>
         </ul>
         <p className={clsx(s.text, isNotices && s.noticesText)}>{item.comment}</p>

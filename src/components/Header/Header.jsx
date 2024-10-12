@@ -1,10 +1,9 @@
 import clsx from 'clsx';
-import { useMediaQuery } from 'react-responsive';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
+import { useIsDesktop, useIsTablet } from '../../hooks/index.js';
 import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
-import { BREAKPOINT } from '../../constants/index.js';
 import BurgerMenu from '../BurgerMenu/BurgerMenu.jsx';
 import Logo from '../Logo/Logo.jsx';
 import Nav from '../Nav/Nav.jsx';
@@ -19,12 +18,8 @@ const Header = () => {
   const isHomePage = location.pathname === '/home' || location.pathname === '/';
   const [isOpen, setIsOpen] = useState(false);
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  const isDesktop = useMediaQuery({
-    query: `(min-width:${BREAKPOINT.DESKTOP}px)`,
-  });
-  const isTablet = useMediaQuery({
-    query: `(min-width:${BREAKPOINT.TABLET}px)`,
-  });
+  const isDesktop = useIsDesktop();
+  const isTablet = useIsTablet();
 
   const handleMenuBtnClick = () => {
     setIsOpen(!isOpen);

@@ -50,15 +50,18 @@ export const removePetFromFavorites = createAsyncThunk(
   }
 );
 
-export const getNotices = createAsyncThunk('notices/getNotices', async (_, thunkAPI) => {
-  try {
-    const { data } = await instance.get('/notices');
+export const getNotices = createAsyncThunk(
+  'notices/getNotices',
+  async ({ page, limit = 6 }, thunkAPI) => {
+    try {
+      const { data } = await instance.get(`/notices?page=${page}&limit=${limit}`);
 
-    return data;
-  } catch (e) {
-    toast.error(
-      `Oops! Something went wrong. Please try again later or contact support. Error details: ${e.message}`
-    );
-    return thunkAPI.rejectWithValue(e.message);
+      return data;
+    } catch (e) {
+      toast.error(
+        `Oops! Something went wrong. Please try again later or contact support. Error details: ${e.message}`
+      );
+      return thunkAPI.rejectWithValue(e.message);
+    }
   }
-});
+);

@@ -19,7 +19,7 @@ const DeleteBtn = ({ id, isNotices }) => {
       onClick={() => handleRemoveBtnClick(id)}
     >
       <svg className={s.icon} width="18" height="18">
-        <use xlinkHref={`${sprite}#icon-trash-2`}></use>
+        <use xlinkHref={`${sprite}#icon-trash`}></use>
       </svg>
     </button>
   );

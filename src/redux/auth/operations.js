@@ -51,7 +51,6 @@ export const getCurrentUserFull = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await instance.get('/users/current/full');
-      console.log(data);
 
       return data;
     } catch (e) {
@@ -66,7 +65,6 @@ export const getCurrentUserFull = createAsyncThunk(
 export const getCurrentUser = createAsyncThunk('auth/getCurrentUser', async (_, thunkAPI) => {
   try {
     const { data } = await instance.get('/users/current');
-    console.log(data);
 
     return data;
   } catch (e) {
