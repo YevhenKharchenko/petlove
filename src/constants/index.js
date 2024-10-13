@@ -11,3 +11,8 @@ export const REGEX = {
 };
 
 export const MAX_RATING = 5;
+
+export const PLACEHOLDER = {
+  ADDRESS: 'Website only',
+  WORK_DAYS: 'Day and night',
+};

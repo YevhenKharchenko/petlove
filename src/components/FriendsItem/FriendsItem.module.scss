@@ -1,0 +1,111 @@
+.item {
+  max-width: 335px;
+  border-radius: 15px;
+  background-color: $primary-white-color;
+  padding: 40px 25px 40px 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  position: relative;
+
+  @include media(tablet) {
+    padding: 40px 20px 40px 20px;
+    max-width: 342px;
+    width: 342px;
+    gap: 16px;
+  }
+
+  @include media(desktop) {
+    padding: 40px 45px 40px 20px;
+    max-width: 371px;
+    width: 371px;
+    gap: 20px;
+  }
+}
+
+.workDays {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border-radius: 30px;
+  padding: 8px;
+  font-size: 12px;
+  line-height: 1.33333;
+  letter-spacing: -0.02em;
+  color: $primary-accent-color;
+  background-color: $secondary-accent-color;
+
+  @include media(tablet) {
+    font-size: 14px;
+    line-height: 1.28571;
+  }
+}
+
+.img {
+  border-radius: 100%;
+  width: 80px;
+  height: 80px;
+
+  @include media(tablet) {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.04em;
+  margin-bottom: 14px;
+
+  @include media(tablet) {
+    font-size: 20px;
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
+}
+
+.address {
+  font-style: normal;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.addressItem {
+  display: flex;
+}
+
+.addressText {
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.02em;
+  color: $primary-placeholder-color;
+}
+
+.link {
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.02em;
+  transition: all $animation-duration $animation-time-function;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  &:hover {
+    color: $primary-hover-accent-color;
+  }
+}
+
+.span {
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.02em;
+}

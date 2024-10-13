@@ -7,7 +7,7 @@ const NewsList = ({ news }) => {
       {Array.isArray(news) &&
         news.map(item => (
           <li key={item._id}>
-            <NewsItem item={item} isNotices={true} />
+            <NewsItem item={item} />
           </li>
         ))}
     </ul>

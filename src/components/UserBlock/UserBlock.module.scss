@@ -33,6 +33,11 @@
   text-decoration: underline;
   text-decoration-skip-ink: none;
   font-weight: 500;
+  transition: all $animation-duration $animation-time-function;
+
+  &:hover {
+    color: $primary-accent-color;
+  }
 
   @include media(tablet) {
     font-size: 14px;

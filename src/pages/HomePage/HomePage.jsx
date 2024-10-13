@@ -33,6 +33,10 @@ const HomePage = () => {
               srcSet={`${homeImgTab} 1x, ${homeImgTab2x} 2x`}
               media={`(min-width:${BREAKPOINT.TABLET}px)`}
             />
+            <source
+              srcSet={`${homeImg} 1x, ${homeImg2x} 2x`}
+              media={`(max-width:${BREAKPOINT.TABLET - 1}px)`}
+            />
             <img
               className={s.img}
               srcSet={`${homeImg} 1x, ${homeImg2x} 2x`}

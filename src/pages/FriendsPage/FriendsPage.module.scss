@@ -1,0 +1,19 @@
+.main {
+  padding-top: 54px;
+  padding-bottom: 80px;
+
+  @include media(tablet) {
+    padding-top: 85px;
+  }
+
+  @include media(desktop) {
+    padding-top: 96px;
+  }
+}
+
+.friendsContainer {
+  @include media(desktop) {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}

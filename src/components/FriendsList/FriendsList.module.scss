@@ -2,15 +2,17 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding-top: 40px;
+  padding-top: 24px;
 
   @include media(tablet) {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: start;
+    padding-top: 44px;
   }
 
   @include media(desktop) {
-    gap: 40px 31px;
+    gap: 28px 19px;
+    padding-top: 60px;
   }
 }
