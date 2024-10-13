@@ -1,3 +1,9 @@
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .logo {
   @include media(tablet) {
     width: 105px;

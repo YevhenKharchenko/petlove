@@ -94,13 +94,36 @@
   line-height: 1.28571;
   letter-spacing: -0.02em;
   transition: all $animation-duration $animation-time-function;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 
   &:hover {
     color: $primary-hover-accent-color;
+  }
+}
+
+.emailLink {
+  max-width: 156px;
+
+  @include media(desktop) {
+    max-width: 161px;
+  }
+}
+
+.addressLink {
+  max-width: 137px;
+
+  @include media(desktop) {
+    max-width: 142px;
+  }
+}
+
+.phoneLink {
+  max-width: 147px;
+
+  @include media(desktop) {
+    max-width: 152px;
   }
 }
 

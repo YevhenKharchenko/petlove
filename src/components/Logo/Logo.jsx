@@ -1,18 +1,14 @@
 import { NavLink } from 'react-router-dom';
-import { logo, logoHome } from '../../assets/images/index.js';
+import { sprite } from '../../assets/icons/index.js';
 import s from './Logo.module.scss';
 
 const Logo = ({ isHomePage }) => {
   return (
     <div>
-      <NavLink to="/home">
-        <img
-          src={isHomePage ? logoHome : logo}
-          className={s.logo}
-          alt="Logo"
-          width="76"
-          height="20"
-        />
+      <NavLink to="/home" className={s.logoWrapper}>
+        <svg className={s.logo} width="76" height="20">
+          <use xlinkHref={`${sprite}#icon-${isHomePage ? 'logo-white' : 'logo'}`}></use>
+        </svg>
       </NavLink>
     </div>
   );

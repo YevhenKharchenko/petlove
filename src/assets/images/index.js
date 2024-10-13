@@ -1,5 +1,3 @@
-export { default as logo } from './logo.svg';
-export { default as logoHome } from './logo-white.svg';
 export { default as homeImg } from './home-image.webp';
 export { default as homeImg2x } from './home-image@2x.webp';
 export { default as homeImgTab } from './home-image-tab.webp';
@@ -40,3 +38,9 @@ export { default as addPetImgTab } from './add-pet-tab.webp';
 export { default as addPetImgTab2x } from './add-pet-tab@2x.webp';
 export { default as addPetImgDesk } from './add-pet-desk.webp';
 export { default as addPetImgDesk2x } from './add-pet-desk@2x.webp';
+export { default as notFoundImg } from './not-found.webp';
+export { default as notFoundImg2x } from './not-found@2x.webp';
+export { default as notFoundImgTab } from './not-found-tab.webp';
+export { default as notFoundImgTab2x } from './not-found-tab@2x.webp';
+export { default as notFoundImgDesk } from './not-found-desk.webp';
+export { default as notFoundImgDesk2x } from './not-found-desk@2x.webp';
