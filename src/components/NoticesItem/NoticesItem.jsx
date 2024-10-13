@@ -34,7 +34,7 @@ const NoticesItem = ({ item, isNotices }) => {
         <ul className={s.characteristicsList}>
           <li className={s.listItem}>
             <h3 className={s.itemTitle}>Name</h3>
-            <p className={s.itemText}>{item.name}</p>
+            <p className={s.itemText}>{capitalizeFirstLetter(item.name)}</p>
           </li>
           <li className={s.listItem}>
             <h3 className={s.itemTitle}>Birthday</h3>

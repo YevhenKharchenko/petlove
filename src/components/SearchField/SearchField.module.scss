@@ -1,0 +1,40 @@
+.form {
+  position: relative;
+}
+
+.input {
+  background-color: transparent;
+  width: 100%;
+  padding: 12px 70px 12px 12px;
+
+  @include media(tablet) {
+    width: 230px;
+    padding: 14px 70px 14px 14px;
+  }
+}
+
+.btn {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  @include media(tablet) {
+    right: 14px;
+  }
+}
+
+.icon {
+  stroke: $primary-text-color;
+  fill: transparent;
+}
+
+.crossBtn {
+  composes: btn;
+  right: 34px;
+}

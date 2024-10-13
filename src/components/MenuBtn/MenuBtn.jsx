@@ -8,6 +8,7 @@ const MenuBtn = ({ handleClick, isHomePage, isLoggedIn }) => {
       type="button"
       className={clsx(s.menuBtn, isLoggedIn && s.isLoggedIn)}
       onClick={handleClick}
+      aria-label="Open menu"
     >
       <svg className={isHomePage ? s.menuIconHome : s.menuIcon} width="32" height="32">
         <use xlinkHref={`${sprite}#icon-menu`}></use>

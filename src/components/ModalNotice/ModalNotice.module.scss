@@ -72,6 +72,7 @@
 .ratingWrapper {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 4px;
   margin-bottom: 24px;
 
@@ -171,7 +172,7 @@
   }
 
   @include media(tablet) {
-    padding: 14px 40px;
+    padding: 14px 12px;
     gap: 8px;
   }
 }

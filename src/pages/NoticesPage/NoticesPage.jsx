@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { selectNotices, selectTotalPages } from '../../redux/notices/selectors.js';
+import { selectNotices, selectNoticesTotalPages } from '../../redux/notices/selectors.js';
 import { getNotices } from '../../redux/notices/operations.js';
 import NoticesFilters from '../../components/NoticesFilters/NoticesFilters.jsx';
 import NoticesList from '../../components/NoticesList/NoticesList.jsx';
@@ -12,7 +12,7 @@ import s from './NoticesPage.module.scss';
 const NoticesPage = () => {
   const dispatch = useDispatch();
   const notices = useSelector(selectNotices);
-  const totalPages = useSelector(selectTotalPages);
+  const totalPages = useSelector(selectNoticesTotalPages);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {

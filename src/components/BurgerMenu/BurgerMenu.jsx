@@ -25,7 +25,7 @@ const BurgerMenu = ({ handleClick, isHomePage, isLoggedIn }) => {
 
   return (
     <section className={clsx(s.backdrop, isHomePage && s.menuHome)} ref={menuRef}>
-      <CloseBtn handleClick={handleClick} isHomePage={isHomePage} />
+      <CloseBtn handleClick={handleClick} isHomePage={isHomePage} isMenu={true} />
       <Nav isMenu={true} isHomePage={isHomePage} handleClick={handleClick} />
       {isLoggedIn ? (
         <LogOutBtn isMenu={true} />

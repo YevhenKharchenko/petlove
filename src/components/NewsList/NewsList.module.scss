@@ -1,0 +1,19 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 24px;
+
+  @include media(tablet) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px 24px;
+    padding-top: 44px;
+  }
+
+  @include media(desktop) {
+    gap: 68px 34px;
+    padding-top: 60px;
+  }
+}

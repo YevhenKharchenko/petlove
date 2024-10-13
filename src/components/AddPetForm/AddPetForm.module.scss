@@ -261,6 +261,7 @@ input.input {
   stroke: $primary-text-color;
   width: 18px;
   height: 18px;
+  cursor: pointer;
 
   @include media(tablet) {
     width: 20px;

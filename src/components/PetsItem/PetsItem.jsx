@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { removePet } from '../../redux/auth/operations.js';
+import { capitalizeFirstLetter } from '../../utils/index.js';
 import { sprite } from '../../assets/icons/index.js';
 import s from './PetsItem.module.scss';
 
@@ -27,7 +28,7 @@ const PetsItem = ({ item }) => {
         <ul className={s.characteristicsList}>
           <li className={s.listItem}>
             <h3 className={s.itemTitle}>Name</h3>
-            <p className={s.itemText}>{item.name}</p>
+            <p className={s.itemText}>{capitalizeFirstLetter(item.name)}</p>
           </li>
           <li className={s.listItem}>
             <h3 className={s.itemTitle}>Birthday</h3>
@@ -35,11 +36,11 @@ const PetsItem = ({ item }) => {
           </li>
           <li className={s.listItem}>
             <h3 className={s.itemTitle}>Sex</h3>
-            <p className={s.itemText}>{item.sex}</p>
+            <p className={s.itemText}>{capitalizeFirstLetter(item.sex)}</p>
           </li>
           <li className={s.listItem}>
             <h3 className={s.itemTitle}>Species</h3>
-            <p className={s.itemText}>{item.species}</p>
+            <p className={s.itemText}>{capitalizeFirstLetter(item.species)}</p>
           </li>
         </ul>
       </div>

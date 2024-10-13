@@ -7,8 +7,8 @@ import {
   homeImgDesk,
   homeImgDesk2x,
 } from '../../assets/images/index.js';
-import s from './HomePage.module.scss';
 import { BREAKPOINT } from '../../constants/index.js';
+import s from './HomePage.module.scss';
 
 const HomePage = () => {
   return (
@@ -23,7 +23,7 @@ const HomePage = () => {
             immeasurable joy and tenderness.
           </p>
         </section>
-        <section>
+        <section className={s.picSection}>
           <picture>
             <source
               srcSet={`${homeImgDesk} 1x, ${homeImgDesk2x} 2x`}
@@ -37,8 +37,8 @@ const HomePage = () => {
               className={s.img}
               srcSet={`${homeImg} 1x, ${homeImg2x} 2x`}
               alt="Girl with dog"
-              width=""
-              height=""
+              width="335"
+              height="402"
             />
           </picture>
         </section>

@@ -52,7 +52,7 @@ const ModalNotice = ({ closeModal }) => {
       <ul className={s.characteristicsList}>
         <li className={s.listItem}>
           <h3 className={s.itemTitle}>Name</h3>
-          <p className={s.itemText}>{pet.name}</p>
+          <p className={s.itemText}>{capitalizeFirstLetter(pet.name)}</p>
         </li>
         <li className={s.listItem}>
           <h3 className={s.itemTitle}>Birthday</h3>
@@ -75,7 +75,12 @@ const ModalNotice = ({ closeModal }) => {
             <use xlinkHref={`${sprite}#icon-heart`}></use>
           </svg>
         </button>
-        <a href={`tel:${pet.user.phone}`} target="_blank" className={s.contactBtn}>
+        <a
+          href={`tel:${pet.user.phone}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={s.contactBtn}
+        >
           Contact
         </a>
       </div>

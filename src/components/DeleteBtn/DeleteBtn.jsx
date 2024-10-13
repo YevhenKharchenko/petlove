@@ -17,6 +17,7 @@ const DeleteBtn = ({ id, isNotices }) => {
     <button
       className={clsx(s.deleteBtn, isNotices && s.noticesDelBtn)}
       onClick={() => handleRemoveBtnClick(id)}
+      aria-label="Remove from favorites"
     >
       <svg className={s.icon} width="18" height="18">
         <use xlinkHref={`${sprite}#icon-trash`}></use>

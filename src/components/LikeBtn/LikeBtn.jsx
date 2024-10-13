@@ -31,6 +31,7 @@ const LikeBtn = ({ id, isNotices }) => {
     <button
       className={clsx(s.likeBtn, isNotices && s.noticesLikeBtn)}
       onClick={() => handleAddBtnClick(id)}
+      aria-label="Add to favorites"
     >
       <svg className={s.icon} width="18" height="18">
         <use xlinkHref={`${sprite}#icon-heart`}></use>

@@ -6,10 +6,8 @@ const noticesSlice = createSlice({
   name: 'notices',
   initialState: {
     notices: [],
-    currentPage: 1,
     totalPages: null,
     pet: null,
-    isLoggedIn: false,
     isRefreshing: false,
     error: null,
   },
@@ -19,7 +17,6 @@ const noticesSlice = createSlice({
       .addCase(getPetById.fulfilled, (state, action) => {
         state.isRefreshing = false;
         state.error = null;
-        state.isLoggedIn = true;
         state.pet = action.payload;
       })
       .addCase(getPetById.rejected, handleError)
