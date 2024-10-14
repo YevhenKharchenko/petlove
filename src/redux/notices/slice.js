@@ -1,6 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addPetToFavorites, getNotices, getPetById, removePetFromFavorites } from './operations.js';
-import { handleError, handleRefreshing } from '../../utils/index.js';
+import {
+  addPetToFavorites,
+  getCategories,
+  getGenders,
+  getNotices,
+  getPetById,
+  getSpecies,
+  removePetFromFavorites,
+} from './operations.js';
+import { formatCategories, handleError, handleRefreshing } from '../../utils/index.js';
 
 const noticesSlice = createSlice({
   name: 'notices',
@@ -8,6 +16,9 @@ const noticesSlice = createSlice({
     notices: [],
     totalPages: null,
     pet: null,
+    categories: [],
+    genders: [],
+    species: [],
     isRefreshing: false,
     error: null,
   },
@@ -39,7 +50,28 @@ const noticesSlice = createSlice({
         state.notices = action.payload.results;
         state.totalPages = action.payload.totalPages;
       })
-      .addCase(getNotices.rejected, handleError);
+      .addCase(getNotices.rejected, handleError)
+      .addCase(getCategories.pending, handleRefreshing)
+      .addCase(getCategories.fulfilled, (state, action) => {
+        state.isRefreshing = false;
+        state.error = null;
+        state.categories = [{ value: '', label: 'Show all' }, ...formatCategories(action.payload)];
+      })
+      .addCase(getCategories.rejected, handleError)
+      .addCase(getGenders.pending, handleRefreshing)
+      .addCase(getGenders.fulfilled, (state, action) => {
+        state.isRefreshing = false;
+        state.error = null;
+        state.genders = [{ value: '', label: 'Show all' }, ...formatCategories(action.payload)];
+      })
+      .addCase(getGenders.rejected, handleError)
+      .addCase(getSpecies.pending, handleRefreshing)
+      .addCase(getSpecies.fulfilled, (state, action) => {
+        state.isRefreshing = false;
+        state.error = null;
+        state.species = [{ value: '', label: 'Show all' }, ...formatCategories(action.payload)];
+      })
+      .addCase(getSpecies.rejected, handleError);
   },
 });
 

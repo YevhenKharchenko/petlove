@@ -3,13 +3,14 @@ import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { Controller, useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useRef, useState } from 'react';
-import { addPetValidationSchema } from '../../validation/validationSchema.js';
+import { useEffect, useRef, useState } from 'react';
+import { getCategories } from '../../redux/notices/operations.js';
+import { selectSpecies } from '../../redux/notices/selectors.js';
 import { addPet } from '../../redux/auth/operations.js';
-import { speciesOptions } from '../../constants/selectOptions.js';
+import { addPetValidationSchema } from '../../validation/validationSchema.js';
 import { selectStyles } from '../../constants/selectStyles.js';
 import { REGEX } from '../../constants/index.js';
 import { sprite } from '../../assets/icons/index.js';
@@ -23,6 +24,7 @@ const AddPetForm = () => {
   const fileInputRef = useRef(null);
   const [preview, setPreview] = useState('');
   const [inputUrl, setInputUrl] = useState('');
+  const species = useSelector(selectSpecies);
 
   const {
     register,
@@ -32,6 +34,10 @@ const AddPetForm = () => {
   } = useForm({
     resolver: yupResolver(addPetValidationSchema),
   });
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
 
   const handleUrlChange = e => {
     const url = e.target.value;
@@ -182,8 +188,8 @@ const AddPetForm = () => {
                   id="species-select"
                   placeholder="Category"
                   styles={selectStyles}
-                  options={speciesOptions}
-                  value={speciesOptions.find(option => option.value === value)}
+                  options={species}
+                  value={species.find(option => option.value === value)}
                   onChange={selectedOption => {
                     onChange(selectedOption.value);
                   }}

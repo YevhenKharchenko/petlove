@@ -1,7 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { selectNotices, selectNoticesTotalPages } from '../../redux/notices/selectors.js';
-import { getNotices } from '../../redux/notices/operations.js';
+import {
+  getCategories,
+  getGenders,
+  getNotices,
+  getSpecies,
+} from '../../redux/notices/operations.js';
 import NoticesFilters from '../../components/NoticesFilters/NoticesFilters.jsx';
 import NoticesList from '../../components/NoticesList/NoticesList.jsx';
 import Pagination from '../../components/Pagination/Pagination.jsx';
@@ -16,10 +21,12 @@ const NoticesPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [keyword, setKeyword] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
+  const [category, setCategory] = useState('');
+  const [species, setSpecies] = useState('');
 
   useEffect(() => {
-    dispatch(getNotices({ page: currentPage, keyword: searchTerm }));
-  }, [dispatch, currentPage, searchTerm]);
+    dispatch(getNotices({ page: currentPage, keyword: searchTerm, category, species }));
+  }, [dispatch, currentPage, searchTerm, category, species]);
 
   const handlePageChange = page => {
     setCurrentPage(page);
@@ -31,6 +38,13 @@ const NoticesPage = () => {
     setSearchTerm(keyword);
   };
 
+  const handleCategoriesChange = selectedOption => {
+    setCategory(selectedOption.value);
+  };
+  const handleSpeciesChange = selectedOption => {
+    setSpecies(selectedOption.value);
+  };
+
   return (
     <main className={s.main}>
       <section className={s.section}>
@@ -40,6 +54,8 @@ const NoticesPage = () => {
             handleSearchSubmit={handleSearchSubmit}
             keyword={keyword}
             setKeyword={setKeyword}
+            handleCategoriesChange={handleCategoriesChange}
+            handleSpeciesChange={handleSpeciesChange}
           />
           <NoticesList notices={notices} />
           <Pagination
