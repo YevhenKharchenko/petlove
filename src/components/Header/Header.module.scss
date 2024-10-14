@@ -6,18 +6,12 @@
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   padding-top: 18px;
-  max-width: 335px;
   margin-left: auto;
   margin-right: auto;
 
   @include media(tablet) {
-    max-width: 704px;
     border-top-left-radius: 60px;
     border-top-right-radius: 60px;
-  }
-
-  @include media(desktop) {
-    max-width: 1216px;
   }
 }
 
@@ -33,6 +27,15 @@
 
 .home {
   background-color: $primary-accent-color;
+  max-width: 335px;
+
+  @include media(tablet) {
+    max-width: 704px;
+  }
+
+  @include media(desktop) {
+    max-width: 1216px;
+  }
 }
 
 .nav {

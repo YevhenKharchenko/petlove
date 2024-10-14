@@ -156,7 +156,7 @@ input.pathInput {
   letter-spacing: -0.02em;
   color: $primary-text-color;
   padding: 13px 39px 13px 12px;
-  width: 161px;
+  max-width: 161px;
   height: 42px;
 
   @include media(tablet) {
@@ -164,6 +164,7 @@ input.pathInput {
     line-height: 1.28571;
     padding: 12px 20px 12px 12px;
     width: 278px;
+    max-width: 278px;
   }
 }
 
@@ -176,7 +177,7 @@ input.pathInput {
   background-color: $secondary-accent-color;
   border-radius: 30px;
   padding: 10px;
-  width: 126px;
+  max-width: 126px;
   height: 42px;
   display: flex;
   justify-content: center;
@@ -191,6 +192,7 @@ input.pathInput {
   @include media(tablet) {
     padding: 12px 14px;
     width: 146px;
+    max-width: 146px;
     font-size: 14px;
     line-height: 1.28571;
   }
@@ -244,11 +246,13 @@ input.input {
 }
 
 .dateWrapper {
-  width: 144px;
+  // width: 144px;
+  max-width: 144px;
   position: relative;
 
   @include media(tablet) {
     width: 210px;
+    max-width: 210px;
   }
 }
 
@@ -273,7 +277,8 @@ input.input {
   border: 1px solid $primary-border-color;
   border-radius: 30px;
   padding: 12px 40px 12px 12px;
-  width: 144px;
+  // width: 144px;
+  max-width: 144px;
   height: 42px;
   font-family: $primary-font-family;
   font-weight: 500;
@@ -296,29 +301,9 @@ input.input {
     font-size: 16px;
     line-height: 1.25;
     width: 210px;
+    max-width: 210px;
     height: 52px;
     padding: 16px 76px 16px 16px;
-  }
-}
-
-.select {
-  width: 143px;
-  height: 42px;
-  border-radius: 30px;
-  border: 1px solid rgba(38, 38, 38, 0.15);
-  box-shadow: none;
-  font-family: Manrope, sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.28571;
-  color: rgba(38, 38, 38, 0.5);
-  cursor: pointer;
-
-  @include media(tablet) {
-    font-size: 16px;
-    line-height: 1.25;
-    width: 210px;
-    height: 52px;
   }
 }
 
