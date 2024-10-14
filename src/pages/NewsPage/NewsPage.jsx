@@ -25,21 +25,25 @@ const NewsPage = () => {
     setCurrentPage(page);
   };
 
-  const handleSearchSubmit = () => {
+  const handleSearchSubmit = e => {
+    e.preventDefault();
     setCurrentPage(1);
     setSearchTerm(keyword);
   };
+
   return (
     <main className={s.main}>
       <section className={s.section}>
         <Container className={s.newsContainer}>
           <div className={s.titleWrapper}>
             <Title title="News" />
-            <SearchField
-              value={keyword}
-              handleChange={setKeyword}
-              handleSubmit={handleSearchSubmit}
-            />
+            <form onSubmit={handleSearchSubmit}>
+              <SearchField
+                keyword={keyword}
+                setKeyword={setKeyword}
+                handleSearchSubmit={handleSearchSubmit}
+              />
+            </form>
           </div>
           <NewsList news={news} />
           <Pagination

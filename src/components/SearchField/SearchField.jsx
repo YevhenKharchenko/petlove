@@ -3,34 +3,29 @@ import { sprite } from '../../assets/icons/index.js';
 import Input from '../../shared/components/Input/Input.jsx';
 import s from './SearchField.module.scss';
 
-const SearchField = ({ value, handleChange, handleSubmit, className }) => {
+const SearchField = ({ keyword, setKeyword, handleSearchSubmit, className }) => {
   const handleInputChange = e => {
-    handleChange(e.target.value);
-  };
-
-  const onSubmit = e => {
-    e.preventDefault();
-    handleSubmit();
+    setKeyword(e.target.value);
   };
 
   const handleCrossClick = () => {
-    handleChange('');
+    setKeyword('');
   };
 
   return (
-    <form className={s.form} onSubmit={onSubmit}>
+    <label className={s.label}>
       <Input
         className={clsx(s.input, className && className)}
         placeholder="Search"
-        value={value}
+        value={keyword}
         onChange={handleInputChange}
       />
-      <button type="submit" className={s.btn} aria-label="Search">
+      <button type="submit" className={s.btn} aria-label="Search" onClick={handleSearchSubmit}>
         <svg className={s.icon} width="18" height="18">
           <use xlinkHref={`${sprite}#icon-search`}></use>
         </svg>
       </button>
-      {value && (
+      {keyword && (
         <button
           type="button"
           className={s.crossBtn}
@@ -42,7 +37,7 @@ const SearchField = ({ value, handleChange, handleSubmit, className }) => {
           </svg>
         </button>
       )}
-    </form>
+    </label>
   );
 };
 

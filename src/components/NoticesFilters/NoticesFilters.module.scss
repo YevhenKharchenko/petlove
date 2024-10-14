@@ -1,0 +1,15 @@
+.form {
+  padding: 20px;
+  border-radius: 30px;
+  background-color: $secondary-accent-color;
+  margin-top: 40px;
+}
+
+.input {
+  background-color: $primary-white-color;
+  color: $primary-text-color;
+
+  &::placeholder {
+    color: $primary-text-color;
+  }
+}

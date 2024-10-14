@@ -37,13 +37,7 @@ const HomePage = () => {
               srcSet={`${homeImg} 1x, ${homeImg2x} 2x`}
               media={`(max-width:${BREAKPOINT.TABLET - 1}px)`}
             />
-            <img
-              className={s.img}
-              srcSet={`${homeImg} 1x, ${homeImg2x} 2x`}
-              alt="Girl with dog"
-              width="335"
-              height="402"
-            />
+            <img className={s.img} srcSet={homeImg} alt="Girl with dog" width="335" height="402" />
           </picture>
         </section>
       </Container>

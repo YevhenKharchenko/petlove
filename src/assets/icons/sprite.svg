@@ -10,7 +10,7 @@
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3.556" d="m8 12 8 8 8-8"/>
     </symbol>
     <symbol id="icon-cross-small" viewBox="0 0 32 32">
-      <path fill="none" stroke="#ef2447" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.909" d="M25.333 6.667 6.666 25.334m0-18.667 18.667 18.667" style="stroke:var(--color2, #ef2447)"/>
+      <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.909" d="M25.333 6.667 6.666 25.334m0-18.667 18.667 18.667"/>
     </symbol>
     <symbol id="icon-eye" viewBox="0 0 32 32">
       <path fill="none" stroke="#f6b83d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.909" d="M1.332 16S6.665 5.333 15.999 5.333 30.666 16 30.666 16s-5.333 10.667-14.667 10.667C6.666 26.667 1.332 16 1.332 16z" style="stroke:var(--color3, #f6b83d)"/>

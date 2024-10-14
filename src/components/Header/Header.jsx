@@ -26,7 +26,7 @@ const Header = () => {
   };
 
   return (
-    <header className={s.header}>
+    <header className={clsx(s.header, isHomePage && s.homeHeader)}>
       <div className={clsx(s.headerWrapper, isHomePage && s.home)}>
         <Container className={s.headerContainer}>
           <Logo isHomePage={isHomePage} />

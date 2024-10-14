@@ -14,13 +14,21 @@ const NoticesPage = () => {
   const notices = useSelector(selectNotices);
   const totalPages = useSelector(selectNoticesTotalPages);
   const [currentPage, setCurrentPage] = useState(1);
+  const [keyword, setKeyword] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    dispatch(getNotices({ page: currentPage }));
-  }, [dispatch, currentPage]);
+    dispatch(getNotices({ page: currentPage, keyword: searchTerm }));
+  }, [dispatch, currentPage, searchTerm]);
 
   const handlePageChange = page => {
     setCurrentPage(page);
+  };
+
+  const handleSearchSubmit = e => {
+    e.preventDefault();
+    setCurrentPage(1);
+    setSearchTerm(keyword);
   };
 
   return (
@@ -28,7 +36,11 @@ const NoticesPage = () => {
       <section className={s.section}>
         <Container className={s.noticesContainer}>
           <Title title="Find your favorite pet" />
-          <NoticesFilters />
+          <NoticesFilters
+            handleSearchSubmit={handleSearchSubmit}
+            keyword={keyword}
+            setKeyword={setKeyword}
+          />
           <NoticesList notices={notices} />
           <Pagination
             currentPage={currentPage}

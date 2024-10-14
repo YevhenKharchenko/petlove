@@ -4,9 +4,11 @@ import { instance } from '../../api/axiosInstance.js';
 
 export const getNotices = createAsyncThunk(
   'notices/getNotices',
-  async ({ page, limit = 6 }, thunkAPI) => {
+  async ({ page, limit = 6, keyword = '' }, thunkAPI) => {
     try {
-      const { data } = await instance.get(`/notices?page=${page}&limit=${limit}`);
+      const { data } = await instance.get(
+        `/notices?page=${page}&limit=${limit}&keyword=${keyword}`
+      );
 
       return data;
     } catch (e) {
