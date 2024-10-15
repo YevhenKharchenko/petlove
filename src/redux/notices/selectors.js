@@ -9,3 +9,5 @@ export const selectCategories = state => state.notices?.categories;
 export const selectGenders = state => state.notices?.genders;
 
 export const selectSpecies = state => state.notices?.species;
+
+export const selectCities = state => state.notices?.cities;

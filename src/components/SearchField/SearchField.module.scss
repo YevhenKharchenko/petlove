@@ -3,6 +3,11 @@
 
 .label {
   position: relative;
+  width: 100%;
+
+  @include media(tablet) {
+    width: 230px;
+  }
 }
 
 .input {

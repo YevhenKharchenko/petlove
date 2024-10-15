@@ -1,12 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { selectNotices, selectNoticesTotalPages } from '../../redux/notices/selectors.js';
-import {
-  getCategories,
-  getGenders,
-  getNotices,
-  getSpecies,
-} from '../../redux/notices/operations.js';
+import { getNotices } from '../../redux/notices/operations.js';
 import NoticesFilters from '../../components/NoticesFilters/NoticesFilters.jsx';
 import NoticesList from '../../components/NoticesList/NoticesList.jsx';
 import Pagination from '../../components/Pagination/Pagination.jsx';
@@ -23,10 +18,23 @@ const NoticesPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [category, setCategory] = useState('');
   const [species, setSpecies] = useState('');
+  const [sortByPopularity, setSortByPopularity] = useState(false);
+  const [sortByPrice, setSortByPrice] = useState(false);
+  const [radioValue, setRadioValue] = useState('');
+  console.log(radioValue);
 
   useEffect(() => {
-    dispatch(getNotices({ page: currentPage, keyword: searchTerm, category, species }));
-  }, [dispatch, currentPage, searchTerm, category, species]);
+    dispatch(
+      getNotices({
+        page: currentPage,
+        keyword: searchTerm,
+        category,
+        species,
+        popularity: sortByPopularity,
+        price: sortByPrice,
+      })
+    );
+  }, [dispatch, currentPage, searchTerm, category, species, sortByPopularity, sortByPrice]);
 
   const handlePageChange = page => {
     setCurrentPage(page);
@@ -39,10 +47,33 @@ const NoticesPage = () => {
   };
 
   const handleCategoriesChange = selectedOption => {
+    setCurrentPage(1);
     setCategory(selectedOption.value);
   };
   const handleSpeciesChange = selectedOption => {
+    setCurrentPage(1);
     setSpecies(selectedOption.value);
+  };
+  const handleSortByPopularity = e => {
+    setCurrentPage(1);
+    setSortByPopularity(true);
+    setSortByPrice(false);
+    setRadioValue(e.target.value);
+    console.log(e.target.value);
+  };
+  const handleSortByPrice = e => {
+    setCurrentPage(1);
+    setSortByPrice(true);
+    setSortByPopularity(false);
+    setRadioValue(e.target.value);
+    console.log(e.target.value);
+  };
+  const handleCrossBtnClick = () => {
+    setCurrentPage(1);
+    setRadioValue('');
+    setSortByPopularity(false);
+    setSortByPrice(false);
+    console.log('cross');
   };
 
   return (
@@ -56,6 +87,10 @@ const NoticesPage = () => {
             setKeyword={setKeyword}
             handleCategoriesChange={handleCategoriesChange}
             handleSpeciesChange={handleSpeciesChange}
+            handleSortByPopularity={handleSortByPopularity}
+            handleSortByPrice={handleSortByPrice}
+            radioValue={radioValue}
+            handleCrossBtnClick={handleCrossBtnClick}
           />
           <NoticesList notices={notices} />
           <Pagination

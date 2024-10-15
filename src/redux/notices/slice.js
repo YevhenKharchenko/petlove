@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   addPetToFavorites,
   getCategories,
+  getCities,
   getGenders,
   getNotices,
   getPetById,
@@ -19,6 +20,7 @@ const noticesSlice = createSlice({
     categories: [],
     genders: [],
     species: [],
+    cities: [],
     isRefreshing: false,
     error: null,
   },
@@ -55,23 +57,33 @@ const noticesSlice = createSlice({
       .addCase(getCategories.fulfilled, (state, action) => {
         state.isRefreshing = false;
         state.error = null;
-        state.categories = [{ value: '', label: 'Show all' }, ...formatCategories(action.payload)];
+        state.categories = [...formatCategories(action.payload)];
       })
       .addCase(getCategories.rejected, handleError)
       .addCase(getGenders.pending, handleRefreshing)
       .addCase(getGenders.fulfilled, (state, action) => {
         state.isRefreshing = false;
         state.error = null;
-        state.genders = [{ value: '', label: 'Show all' }, ...formatCategories(action.payload)];
+        state.genders = [...formatCategories(action.payload)];
       })
       .addCase(getGenders.rejected, handleError)
       .addCase(getSpecies.pending, handleRefreshing)
       .addCase(getSpecies.fulfilled, (state, action) => {
         state.isRefreshing = false;
         state.error = null;
-        state.species = [{ value: '', label: 'Show all' }, ...formatCategories(action.payload)];
+        state.species = [...formatCategories(action.payload)];
       })
-      .addCase(getSpecies.rejected, handleError);
+      .addCase(getSpecies.rejected, handleError)
+      .addCase(getCities.pending, handleRefreshing)
+      .addCase(getCities.fulfilled, (state, action) => {
+        state.isRefreshing = false;
+        state.error = null;
+        state.cities = action.payload.map(el => {
+          return { value: el._id, label: el.cityEn };
+        });
+        console.log(action.payload);
+      })
+      .addCase(getCities.rejected, handleError);
   },
 });
 

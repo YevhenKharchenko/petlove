@@ -3,6 +3,9 @@
   border-radius: 30px;
   background-color: $secondary-accent-color;
   margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .input {
@@ -12,4 +15,80 @@
   &::placeholder {
     color: $primary-text-color;
   }
+}
+
+.categoryWrapper {
+  display: flex;
+  gap: 8px;
+}
+
+.locationInput {
+  background-color: $primary-white-color;
+  color: $primary-text-color;
+
+  &::placeholder {
+    color: $primary-text-color;
+  }
+}
+
+.fieldset {
+  padding: 0;
+  padding-top: 20px;
+  margin: 0;
+  margin-top: 10px;
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-top: 1px solid rgba(38, 38, 38, 0.1);
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.radioLabel {
+  border-radius: 30px;
+  padding: 12px;
+  height: 42px;
+  background-color: $primary-white-color;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.03em;
+  cursor: pointer;
+  display: flex;
+  gap: 6px;
+
+  &:hover {
+    background-color: $primary-accent-color;
+    color: $primary-white-color;
+  }
+
+  // &:has(input:checked) {
+  //   background-color: $primary-accent-color;
+  //   color: $primary-white-color;
+  // }
+}
+
+.checked {
+  background-color: $primary-accent-color;
+  color: $primary-white-color;
+}
+
+.crossBtn {
+  width: 18px;
+  height: 18px;
+}
+
+.icon {
+  stroke: $primary-white-color;
 }

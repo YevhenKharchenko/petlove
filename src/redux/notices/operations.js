@@ -4,15 +4,21 @@ import { instance } from '../../api/axiosInstance.js';
 
 export const getNotices = createAsyncThunk(
   'notices/getNotices',
-  async ({ page, limit = 6, keyword = '', category = '', species = '' }, thunkAPI) => {
+  async (
+    { page, limit = 6, keyword = '', category = '', species = '', popularity = '', price = '' },
+    thunkAPI
+  ) => {
     console.log(
-      `/notices?page=${page}&limit=${limit}&keyword=${keyword}&category=${category}&species=${species}&gender=male`
+      `/notices?page=${page}&limit=${limit}&keyword=${keyword}&category=${category}&species=${species}&byPopularity=${popularity}&byPrice=${price}`
     );
 
     try {
       const { data } = await instance.get(
-        `/notices?page=${page}&limit=${limit}&keyword=${keyword}&category=${category}&species=${species}`
+        `/notices?page=${page}&limit=${limit}&keyword=${keyword}&category=${category}&species=${species}&byPopularity=${popularity}${
+          price ? '&byPrice=true' : ''
+        }`
       );
+      console.log(data);
 
       return data;
     } catch (e) {
@@ -97,6 +103,19 @@ export const getGenders = createAsyncThunk('notices/getGenders', async (_, thunk
 export const getSpecies = createAsyncThunk('notices/getSpecies', async (_, thunkAPI) => {
   try {
     const { data } = await instance.get('/notices/species');
+
+    return data;
+  } catch (e) {
+    toast.error(
+      `Oops! Something went wrong. Please try again later or contact support. Error details: ${e.message}`
+    );
+    return thunkAPI.rejectWithValue(e.message);
+  }
+});
+
+export const getCities = createAsyncThunk('notices/getCities', async (_, thunkAPI) => {
+  try {
+    const { data } = await instance.get('/cities');
 
     return data;
   } catch (e) {

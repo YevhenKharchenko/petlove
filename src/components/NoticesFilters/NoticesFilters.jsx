@@ -1,11 +1,14 @@
-import { selectStyles } from '../../constants/selectStyles.js';
+import clsx from 'clsx';
 import Select from 'react-select';
-import SearchField from '../SearchField/SearchField.jsx';
-import s from './NoticesFilters.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getCategories, getGenders, getSpecies } from '../../redux/notices/operations.js';
 import { selectCategories, selectGenders, selectSpecies } from '../../redux/notices/selectors.js';
+import { DEFAULT_OPTION } from '../../constants/index.js';
+import { selectStyles, speciesStyles } from '../../constants/selectStyles.js';
+import { sprite } from '../../assets/icons/index.js';
+import SearchField from '../SearchField/SearchField.jsx';
+import s from './NoticesFilters.module.scss';
 
 const NoticesFilters = ({
   handleSearchSubmit,
@@ -13,6 +16,10 @@ const NoticesFilters = ({
   setKeyword,
   handleCategoriesChange,
   handleSpeciesChange,
+  handleSortByPopularity,
+  handleSortByPrice,
+  radioValue,
+  handleCrossBtnClick,
 }) => {
   const dispatch = useDispatch();
   const categories = useSelector(selectCategories);
@@ -33,19 +40,101 @@ const NoticesFilters = ({
         handleSearchSubmit={handleSearchSubmit}
         setKeyword={setKeyword}
       />
+      <div className={s.categoryWrapper}>
+        <Select
+          styles={selectStyles}
+          placeholder="Category"
+          options={[DEFAULT_OPTION, ...categories]}
+          onChange={handleCategoriesChange}
+        />
+        <Select
+          styles={selectStyles}
+          placeholder="By gender"
+          options={[DEFAULT_OPTION, ...genders]}
+        />
+      </div>
       <Select
-        styles={selectStyles}
-        placeholder="Category"
-        options={categories}
-        onChange={handleCategoriesChange}
-      />
-      <Select styles={selectStyles} placeholder="By gender" options={genders} />
-      <Select
-        styles={selectStyles}
+        styles={speciesStyles}
         placeholder="By type"
-        options={species}
+        options={[DEFAULT_OPTION, ...species]}
         onChange={handleSpeciesChange}
       />
+      <Select
+        styles={speciesStyles}
+        placeholder="Location"
+        // options={cities}
+        // onChange={handleSpeciesChange}
+      />
+      <fieldset className={s.fieldset}>
+        <label className={clsx(s.radioLabel, radioValue === 'popular' && s.checked)}>
+          Popular
+          <input
+            type="radio"
+            className={s.visuallyHidden}
+            name="sortBy"
+            value="popular"
+            onChange={handleSortByPopularity}
+          />
+          {radioValue === 'popular' && (
+            <button className={s.crossBtn} type="button" onClick={handleCrossBtnClick}>
+              <svg className={s.icon} width="18" height="18">
+                <use xlinkHref={`${sprite}#icon-cross-small`}></use>
+              </svg>
+            </button>
+          )}
+        </label>
+        <label className={clsx(s.radioLabel, radioValue === 'unpopular' && s.checked)}>
+          Unpopular
+          <input
+            type="radio"
+            className={s.visuallyHidden}
+            name="sortBy"
+            value="unpopular"
+            onChange={handleSortByPopularity}
+          />
+          {radioValue === 'unpopular' && (
+            <button className={s.crossBtn} type="button" onClick={handleCrossBtnClick}>
+              <svg className={s.icon} width="18" height="18">
+                <use xlinkHref={`${sprite}#icon-cross-small`}></use>
+              </svg>
+            </button>
+          )}
+        </label>
+        <label className={clsx(s.radioLabel, radioValue === 'cheap' && s.checked)}>
+          Cheap
+          <input
+            type="radio"
+            className={s.visuallyHidden}
+            name="sortBy"
+            value="cheap"
+            onChange={handleSortByPrice}
+          />
+          {radioValue === 'cheap' && (
+            <button className={s.crossBtn} type="button" onClick={handleCrossBtnClick}>
+              <svg className={s.icon} width="18" height="18">
+                <use xlinkHref={`${sprite}#icon-cross-small`}></use>
+              </svg>
+            </button>
+          )}
+        </label>
+        <label className={clsx(s.radioLabel, radioValue === 'expensive' && s.checked)}>
+          Expensive
+          <input
+            type="radio"
+            className={s.visuallyHidden}
+            name="sortBy"
+            value="expensive"
+            onChange={handleSortByPrice}
+          />
+          {radioValue === 'expensive' && (
+            <button className={s.crossBtn} type="button" onClick={handleCrossBtnClick}>
+              <svg className={s.icon} width="18" height="18">
+                <use xlinkHref={`${sprite}#icon-cross-small`}></use>
+              </svg>
+            </button>
+          )}
+        </label>
+      </fieldset>
     </form>
   );
 };

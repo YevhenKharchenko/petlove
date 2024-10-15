@@ -3,7 +3,14 @@ import { sprite } from '../../assets/icons/index.js';
 import Input from '../../shared/components/Input/Input.jsx';
 import s from './SearchField.module.scss';
 
-const SearchField = ({ keyword, setKeyword, handleSearchSubmit, className }) => {
+const SearchField = ({
+  keyword,
+  setKeyword,
+  handleSearchSubmit,
+  className,
+  labelClassName,
+  placeholder = 'Search',
+}) => {
   const handleInputChange = e => {
     setKeyword(e.target.value);
   };
@@ -13,10 +20,10 @@ const SearchField = ({ keyword, setKeyword, handleSearchSubmit, className }) => 
   };
 
   return (
-    <label className={s.label}>
+    <label className={clsx(s.label, labelClassName && labelClassName)}>
       <Input
         className={clsx(s.input, className && className)}
-        placeholder="Search"
+        placeholder={placeholder}
         value={keyword}
         onChange={handleInputChange}
       />

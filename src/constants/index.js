@@ -16,3 +16,5 @@ export const PLACEHOLDER = {
   ADDRESS: 'Website only',
   WORK_DAYS: 'Day and night',
 };
+
+export const DEFAULT_OPTION = { value: '', label: 'Show all' };
