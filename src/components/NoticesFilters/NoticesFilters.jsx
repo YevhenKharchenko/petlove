@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { getCategories, getGenders, getSpecies } from '../../redux/notices/operations.js';
 import { selectCategories, selectGenders, selectSpecies } from '../../redux/notices/selectors.js';
 import { DEFAULT_OPTION } from '../../constants/index.js';
-import { selectStyles, speciesStyles } from '../../constants/selectStyles.js';
+import { categoryStyles, locationStyles, speciesStyles } from '../../constants/selectStyles.js';
 import { sprite } from '../../assets/icons/index.js';
 import SearchField from '../SearchField/SearchField.jsx';
 import s from './NoticesFilters.module.scss';
@@ -39,16 +39,17 @@ const NoticesFilters = ({
         keyword={keyword}
         handleSearchSubmit={handleSearchSubmit}
         setKeyword={setKeyword}
+        labelClassName={s.searchLabel}
       />
       <div className={s.categoryWrapper}>
         <Select
-          styles={selectStyles}
+          styles={categoryStyles}
           placeholder="Category"
           options={[DEFAULT_OPTION, ...categories]}
           onChange={handleCategoriesChange}
         />
         <Select
-          styles={selectStyles}
+          styles={categoryStyles}
           placeholder="By gender"
           options={[DEFAULT_OPTION, ...genders]}
         />
@@ -59,12 +60,7 @@ const NoticesFilters = ({
         options={[DEFAULT_OPTION, ...species]}
         onChange={handleSpeciesChange}
       />
-      <Select
-        styles={speciesStyles}
-        placeholder="Location"
-        // options={cities}
-        // onChange={handleSpeciesChange}
-      />
+      <Select styles={locationStyles} placeholder="Location" />
       <fieldset className={s.fieldset}>
         <label className={clsx(s.radioLabel, radioValue === 'popular' && s.checked)}>
           Popular

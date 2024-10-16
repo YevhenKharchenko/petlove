@@ -4,15 +4,17 @@ import { useCallback } from 'react';
 import { useModal } from '../../hooks/useModal.js';
 import { addPetToFavorites } from '../../redux/notices/operations.js';
 import { getCurrentUser } from '../../redux/auth/operations.js';
-import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
+import { selectFavorites, selectIsLoggedIn } from '../../redux/auth/selectors.js';
 import { sprite } from '../../assets/icons/index.js';
 import ModalAttention from '../ModalAttention/ModalAttention.jsx';
+import ModalCongrats from '../ModalCongrats/ModalCongrats.jsx';
 import s from './LikeBtn.module.scss';
 
 const LikeBtn = ({ id, isNotices }) => {
   const dispatch = useDispatch();
   const setModal = useModal();
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const favorites = useSelector(selectFavorites);
 
   const closeModal = useCallback(() => {
     setModal();
@@ -20,6 +22,10 @@ const LikeBtn = ({ id, isNotices }) => {
 
   const handleAddBtnClick = async id => {
     if (isLoggedIn) {
+      if (!favorites.length) {
+        setModal(<ModalCongrats closeModal={closeModal} />);
+      }
+
       await dispatch(addPetToFavorites(id));
       await dispatch(getCurrentUser());
     } else {

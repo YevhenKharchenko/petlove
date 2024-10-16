@@ -81,7 +81,6 @@ const noticesSlice = createSlice({
         state.cities = action.payload.map(el => {
           return { value: el._id, label: el.cityEn };
         });
-        console.log(action.payload);
       })
       .addCase(getCities.rejected, handleError);
   },

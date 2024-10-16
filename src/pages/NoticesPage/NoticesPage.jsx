@@ -21,7 +21,6 @@ const NoticesPage = () => {
   const [sortByPopularity, setSortByPopularity] = useState(false);
   const [sortByPrice, setSortByPrice] = useState(false);
   const [radioValue, setRadioValue] = useState('');
-  console.log(radioValue);
 
   useEffect(() => {
     dispatch(
@@ -50,30 +49,31 @@ const NoticesPage = () => {
     setCurrentPage(1);
     setCategory(selectedOption.value);
   };
+
   const handleSpeciesChange = selectedOption => {
     setCurrentPage(1);
     setSpecies(selectedOption.value);
   };
+
   const handleSortByPopularity = e => {
     setCurrentPage(1);
     setSortByPopularity(true);
     setSortByPrice(false);
     setRadioValue(e.target.value);
-    console.log(e.target.value);
   };
+
   const handleSortByPrice = e => {
     setCurrentPage(1);
     setSortByPrice(true);
     setSortByPopularity(false);
     setRadioValue(e.target.value);
-    console.log(e.target.value);
   };
+
   const handleCrossBtnClick = () => {
     setCurrentPage(1);
     setRadioValue('');
     setSortByPopularity(false);
     setSortByPrice(false);
-    console.log('cross');
   };
 
   return (

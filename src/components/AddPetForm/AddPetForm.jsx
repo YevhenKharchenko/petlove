@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useRef, useState } from 'react';
-import { getCategories } from '../../redux/notices/operations.js';
+import { getSpecies } from '../../redux/notices/operations.js';
 import { selectSpecies } from '../../redux/notices/selectors.js';
 import { addPet } from '../../redux/auth/operations.js';
 import { addPetValidationSchema } from '../../validation/validationSchema.js';
@@ -36,7 +36,7 @@ const AddPetForm = () => {
   });
 
   useEffect(() => {
-    dispatch(getCategories());
+    dispatch(getSpecies());
   }, [dispatch]);
 
   const handleUrlChange = e => {

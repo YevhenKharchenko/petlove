@@ -8,17 +8,12 @@ export const getNotices = createAsyncThunk(
     { page, limit = 6, keyword = '', category = '', species = '', popularity = '', price = '' },
     thunkAPI
   ) => {
-    console.log(
-      `/notices?page=${page}&limit=${limit}&keyword=${keyword}&category=${category}&species=${species}&byPopularity=${popularity}&byPrice=${price}`
-    );
-
     try {
       const { data } = await instance.get(
         `/notices?page=${page}&limit=${limit}&keyword=${keyword}&category=${category}&species=${species}&byPopularity=${popularity}${
           price ? '&byPrice=true' : ''
         }`
       );
-      console.log(data);
 
       return data;
     } catch (e) {
