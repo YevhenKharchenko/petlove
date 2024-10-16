@@ -11,11 +11,13 @@ import Title from '../../shared/components/Title/Title.jsx';
 import PetBlock from '../../shared/components/PetBlock/PetBlock.jsx';
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm.jsx';
 import Container from '../../shared/components/Container/Container.jsx';
+import DocumentTitle from '../../components/DocumentTitle.jsx';
 import s from './RegistrationPage.module.scss';
 
 const RegistrationPage = () => {
   return (
     <main className={s.section}>
+      <DocumentTitle>Registration</DocumentTitle>
       <Container className={s.authContainer}>
         <PetBlock
           mob={registerImg}

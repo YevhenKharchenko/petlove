@@ -9,11 +9,13 @@ import {
 } from '../../assets/images/index.js';
 import { BREAKPOINT } from '../../constants/index.js';
 import Container from '../../shared/components/Container/Container.jsx';
+import DocumentTitle from '../../components/DocumentTitle.jsx';
 import s from './NotFoundPage.module.scss';
 
 const NotFoundPage = () => {
   return (
     <main className={s.main}>
+      <DocumentTitle>Not found</DocumentTitle>
       <section>
         <Container>
           <div className={s.background}>

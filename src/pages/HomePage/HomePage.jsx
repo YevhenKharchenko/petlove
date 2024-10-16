@@ -8,11 +8,13 @@ import {
   homeImgDesk2x,
 } from '../../assets/images/index.js';
 import { BREAKPOINT } from '../../constants/index.js';
+import DocumentTitle from '../../components/DocumentTitle.jsx';
 import s from './HomePage.module.scss';
 
 const HomePage = () => {
   return (
     <main className={s.hero}>
+      <DocumentTitle>Home</DocumentTitle>
       <Container>
         <section className={s.heroWrapper}>
           <h1 className={s.title}>

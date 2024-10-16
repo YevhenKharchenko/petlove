@@ -11,11 +11,13 @@ import Title from '../../shared/components/Title/Title.jsx';
 import PetBlock from '../../shared/components/PetBlock/PetBlock.jsx';
 import LoginForm from '../../components/LoginForm/LoginForm.jsx';
 import Container from '../../shared/components/Container/Container.jsx';
+import DocumentTitle from '../../components/DocumentTitle.jsx';
 import s from './LoginPage.module.scss';
 
 const LoginPage = () => {
   return (
     <main className={s.section}>
+      <DocumentTitle>Login</DocumentTitle>
       <Container className={s.authContainer}>
         <PetBlock
           mob={loginImg}

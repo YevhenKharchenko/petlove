@@ -7,6 +7,7 @@ import NoticesList from '../../components/NoticesList/NoticesList.jsx';
 import Pagination from '../../components/Pagination/Pagination.jsx';
 import Container from '../../shared/components/Container/Container.jsx';
 import Title from '../../shared/components/Title/Title.jsx';
+import DocumentTitle from '../../components/DocumentTitle.jsx';
 import s from './NoticesPage.module.scss';
 
 const NoticesPage = () => {
@@ -78,6 +79,7 @@ const NoticesPage = () => {
 
   return (
     <main className={s.main}>
+      <DocumentTitle>Notices</DocumentTitle>
       <section className={s.section}>
         <Container className={s.noticesContainer}>
           <Title title="Find your favorite pet" />

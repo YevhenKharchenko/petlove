@@ -7,6 +7,7 @@ import Title from '../../shared/components/Title/Title.jsx';
 import NewsList from '../../components/NewsList/NewsList.jsx';
 import Pagination from '../../components/Pagination/Pagination.jsx';
 import SearchField from '../../components/SearchField/SearchField.jsx';
+import DocumentTitle from '../../components/DocumentTitle.jsx';
 import s from './NewsPage.module.scss';
 
 const NewsPage = () => {
@@ -33,6 +34,7 @@ const NewsPage = () => {
 
   return (
     <main className={s.main}>
+      <DocumentTitle>News</DocumentTitle>
       <section className={s.section}>
         <Container className={s.newsContainer}>
           <div className={s.titleWrapper}>
