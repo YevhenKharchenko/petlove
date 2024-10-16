@@ -26,3 +26,8 @@ export const STYLES = {
   PRIMARY_ACCENT_COLOR: '#f6b83d',
   PRIMARY_BORDER_COLOR: 'rgba(38, 38, 38, 0.15)',
 };
+
+export const CLOUDINARY = {
+  CLOUD_NAME: import.meta.env.VITE_CLOUD_NAME,
+  UNSIGNED_PRESET_NAME: import.meta.env.VITE_UNSIGNED_PRESET_NAME,
+};

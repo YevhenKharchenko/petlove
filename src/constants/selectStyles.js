@@ -14,7 +14,7 @@ const baseStyles = {
     fontWeight: '500',
     fontSize: '14px',
     lineHeight: '1.28571',
-    color: 'rgba(38, 38, 38, 0.5)',
+    color: `${STYLES.PLACEHOLDER_COLOR}`,
     cursor: 'pointer',
     transition: 'border-color 0.5s ease',
     '&:hover': {
@@ -51,7 +51,7 @@ const responsiveStyles = {
   },
 };
 
-export const selectStyles = {
+export const categoriesStyles = {
   ...baseStyles,
   control: (provided, state) =>
     baseStyles.control(provided, state, {

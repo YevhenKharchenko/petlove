@@ -16,6 +16,7 @@ import CloseBtn from '../CloseBtn/CloseBtn.jsx';
 import Input from '../../shared/components/Input/Input.jsx';
 import Button from '../../shared/components/Button/Button.jsx';
 import s from './ModalEditUser.module.scss';
+import { saveFileToCloudinary } from '../../services/saveFileToCloudinary.js';
 
 const ModalEditUser = ({ closeModal }) => {
   const dispatch = useDispatch();
@@ -26,10 +27,12 @@ const ModalEditUser = ({ closeModal }) => {
   const phone = useSelector(selectPhone);
   const [preview, setPreview] = useState(avatar);
   const [inputUrl, setInputUrl] = useState('');
+
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm({
     resolver: yupResolver(userProfileValidationSchema),
     defaultValues: {
@@ -43,6 +46,7 @@ const ModalEditUser = ({ closeModal }) => {
   const handleUrlChange = e => {
     const url = e.target.value;
     setInputUrl(url);
+    setValue('avatar', url);
 
     if (url.match(REGEX.AVATAR)) {
       setPreview(url);
@@ -53,12 +57,20 @@ const ModalEditUser = ({ closeModal }) => {
     fileInputRef.current.click();
   };
 
-  const handleFileChange = e => {
+  const handleFileChange = async e => {
     const selectedAvatar = e.target.files[0];
 
     if (selectedAvatar) {
       const objectURL = URL.createObjectURL(selectedAvatar);
       setPreview(objectURL);
+
+      const filePath = await saveFileToCloudinary(selectedAvatar);
+
+      if (filePath) {
+        setPreview(filePath);
+        setInputUrl(filePath);
+        setValue('avatar', filePath);
+      }
     }
   };
 

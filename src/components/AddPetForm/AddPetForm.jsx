@@ -11,7 +11,8 @@ import { getSpecies } from '../../redux/notices/operations.js';
 import { selectSpecies } from '../../redux/notices/selectors.js';
 import { addPet } from '../../redux/auth/operations.js';
 import { addPetValidationSchema } from '../../validation/validationSchema.js';
-import { selectStyles } from '../../constants/selectStyles.js';
+import { categoriesStyles } from '../../constants/selectStyles.js';
+import { saveFileToCloudinary } from '../../services/index.js';
 import { REGEX } from '../../constants/index.js';
 import { sprite } from '../../assets/icons/index.js';
 import Input from '../../shared/components/Input/Input.jsx';
@@ -31,6 +32,7 @@ const AddPetForm = () => {
     handleSubmit,
     formState: { errors },
     control,
+    setValue,
   } = useForm({
     resolver: yupResolver(addPetValidationSchema),
   });
@@ -42,6 +44,7 @@ const AddPetForm = () => {
   const handleUrlChange = e => {
     const url = e.target.value;
     setInputUrl(url);
+    setValue('imgURL', url);
 
     if (url.match(REGEX.AVATAR)) {
       setPreview(url);
@@ -52,12 +55,20 @@ const AddPetForm = () => {
     fileInputRef.current.click();
   };
 
-  const handleFileChange = e => {
+  const handleFileChange = async e => {
     const selectedAvatar = e.target.files[0];
 
     if (selectedAvatar) {
       const objectURL = URL.createObjectURL(selectedAvatar);
       setPreview(objectURL);
+
+      const filePath = await saveFileToCloudinary(selectedAvatar);
+
+      if (filePath) {
+        setPreview(filePath);
+        setInputUrl(filePath);
+        setValue('imgURL', filePath);
+      }
     }
   };
 
@@ -187,7 +198,7 @@ const AddPetForm = () => {
                   inputRef={ref}
                   id="species-select"
                   placeholder="Category"
-                  styles={selectStyles}
+                  styles={categoriesStyles}
                   options={species}
                   value={species.find(option => option.value === value)}
                   onChange={selectedOption => {
