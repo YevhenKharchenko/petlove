@@ -3,7 +3,7 @@ import { selectPet } from '../../redux/notices/selectors.js';
 import { addPetToFavorites, removePetFromFavorites } from '../../redux/notices/operations.js';
 import { getCurrentUser } from '../../redux/auth/operations.js';
 import { selectIsFavorite } from '../../redux/auth/selectors.js';
-import { convertPopularityRating, capitalizeFirstLetter } from '../../utils/index.js';
+import { convertPopularityRating, capitalizeFirstLetter, formatDate } from '../../utils/index.js';
 import { MAX_RATING } from '../../constants/index.js';
 import { sprite } from '../../assets/icons/index.js';
 import CloseBtn from '../CloseBtn/CloseBtn.jsx';
@@ -56,7 +56,7 @@ const ModalNotice = ({ closeModal }) => {
         </li>
         <li className={s.listItem}>
           <h3 className={s.itemTitle}>Birthday</h3>
-          <p className={s.itemText}>{pet.birthday}</p>
+          <p className={s.itemText}>{formatDate(pet.birthday)}</p>
         </li>
         <li className={s.listItem}>
           <h3 className={s.itemTitle}>Sex</h3>

@@ -1,8 +1,12 @@
 .pagination {
   display: flex;
   justify-content: center;
-  gap: 11px;
+  gap: 4px;
   padding-top: 44px;
+
+  @include media(mobile) {
+    gap: 11px;
+  }
 
   @include media(tablet) {
     padding-top: 60px;
@@ -51,9 +55,13 @@
 
 .arrowWrapper {
   display: flex;
-  gap: 6px;
+  gap: 4px;
   justify-content: center;
   align-items: center;
+
+  @include media(mobile) {
+    gap: 6px;
+  }
 
   @include media(tablet) {
     gap: 8px;
@@ -64,5 +72,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 4px;
+
+  @include media(mobile) {
+    gap: 10px;
+  }
 }

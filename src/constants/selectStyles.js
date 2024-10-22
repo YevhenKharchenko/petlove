@@ -32,6 +32,7 @@ const baseStyles = {
     ...baseStyles,
     transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : 'rotate(0deg)',
     transition: 'transform 0.3s ease',
+    color: STYLES.PRIMARY_TEXT_COLOR,
   }),
   indicatorSeparator: baseStyles => ({
     ...baseStyles,
@@ -55,11 +56,18 @@ export const categoriesStyles = {
   ...baseStyles,
   control: (provided, state) =>
     baseStyles.control(provided, state, {
-      width: '143px',
+      [`@media only screen and (min-width: ${BREAKPOINT.MOBILE}px)`]: {
+        ...responsiveStyles,
+        width: '143px',
+      },
       [`@media only screen and (min-width: ${BREAKPOINT.TABLET}px)`]: {
         ...responsiveStyles,
       },
     }),
+  dropdownIndicator: baseStyles => ({
+    ...baseStyles,
+    color: STYLES.PLACEHOLDER_COLOR,
+  }),
   placeholder: baseStyles => ({
     ...baseStyles,
     color: STYLES.PLACEHOLDER_COLOR,
@@ -70,7 +78,9 @@ export const categoryStyles = {
   ...baseStyles,
   control: (provided, state) =>
     baseStyles.control(provided, state, {
-      width: '143px',
+      [`@media only screen and (min-width: ${BREAKPOINT.MOBILE}px)`]: {
+        width: '143px',
+      },
       [`@media only screen and (min-width: ${BREAKPOINT.TABLET}px)`]: {
         width: '170px',
         height: '48px',

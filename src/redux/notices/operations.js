@@ -5,12 +5,22 @@ import { instance } from '../../api/axiosInstance.js';
 export const getNotices = createAsyncThunk(
   'notices/getNotices',
   async (
-    { page, limit = 6, keyword = '', category = '', species = '', popularity = '', price = '' },
+    {
+      page,
+      limit = 6,
+      keyword = '',
+      category = '',
+      species = '',
+      sex = '',
+      locationId = '',
+      popularity = '',
+      price = '',
+    },
     thunkAPI
   ) => {
     try {
       const { data } = await instance.get(
-        `/notices?page=${page}&limit=${limit}&keyword=${keyword}&category=${category}&species=${species}&byPopularity=${popularity}${
+        `/notices?page=${page}&limit=${limit}&keyword=${keyword}&category=${category}&species=${species}&sex=${sex}&locationId=${locationId}&byPopularity=${popularity}${
           price ? '&byPrice=true' : ''
         }`
       );
@@ -110,7 +120,7 @@ export const getSpecies = createAsyncThunk('notices/getSpecies', async (_, thunk
 
 export const getCities = createAsyncThunk('notices/getCities', async (_, thunkAPI) => {
   try {
-    const { data } = await instance.get('/cities');
+    const { data } = await instance.get('/cities/locations');
 
     return data;
   } catch (e) {

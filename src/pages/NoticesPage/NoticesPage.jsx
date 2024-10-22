@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { selectNotices, selectNoticesTotalPages } from '../../redux/notices/selectors.js';
 import { getNotices } from '../../redux/notices/operations.js';
+import { getCurrentUser } from '../../redux/auth/operations.js';
 import NoticesFilters from '../../components/NoticesFilters/NoticesFilters.jsx';
 import NoticesList from '../../components/NoticesList/NoticesList.jsx';
 import Pagination from '../../components/Pagination/Pagination.jsx';
@@ -19,6 +20,8 @@ const NoticesPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [category, setCategory] = useState('');
   const [species, setSpecies] = useState('');
+  const [sex, setSex] = useState('');
+  const [location, setLocation] = useState('');
   const [sortByPopularity, setSortByPopularity] = useState(false);
   const [sortByPrice, setSortByPrice] = useState(false);
   const [radioValue, setRadioValue] = useState('');
@@ -30,11 +33,24 @@ const NoticesPage = () => {
         keyword: searchTerm,
         category,
         species,
+        sex,
+        locationId: location,
         popularity: sortByPopularity,
         price: sortByPrice,
       })
     );
-  }, [dispatch, currentPage, searchTerm, category, species, sortByPopularity, sortByPrice]);
+    dispatch(getCurrentUser());
+  }, [
+    dispatch,
+    currentPage,
+    searchTerm,
+    category,
+    species,
+    sex,
+    location,
+    sortByPopularity,
+    sortByPrice,
+  ]);
 
   const handlePageChange = page => {
     setCurrentPage(page);
@@ -54,6 +70,16 @@ const NoticesPage = () => {
   const handleSpeciesChange = selectedOption => {
     setCurrentPage(1);
     setSpecies(selectedOption.value);
+  };
+
+  const handleSexChange = selectedOption => {
+    setCurrentPage(1);
+    setSex(selectedOption.value);
+  };
+
+  const handleLocationChange = selectedOption => {
+    setCurrentPage(1);
+    setLocation(selectedOption.value);
   };
 
   const handleSortByPopularity = e => {
@@ -89,6 +115,8 @@ const NoticesPage = () => {
             setKeyword={setKeyword}
             handleCategoriesChange={handleCategoriesChange}
             handleSpeciesChange={handleSpeciesChange}
+            handleSexChange={handleSexChange}
+            handleLocationChange={handleLocationChange}
             handleSortByPopularity={handleSortByPopularity}
             handleSortByPrice={handleSortByPrice}
             radioValue={radioValue}

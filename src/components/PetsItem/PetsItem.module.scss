@@ -89,6 +89,7 @@
 
   @include media(desktop) {
     gap: 27px;
+    flex-wrap: nowrap;
   }
 }
 

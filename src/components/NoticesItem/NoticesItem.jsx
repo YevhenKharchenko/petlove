@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 import { selectIsFavorite } from '../../redux/auth/selectors.js';
-import { capitalizeFirstLetter, convertPopularityRating } from '../../utils/index.js';
+import { capitalizeFirstLetter, convertPopularityRating, formatDate } from '../../utils/index.js';
 import LearnMoreBtn from '../LearnMoreBtn/LearnMoreBtn.jsx';
 import Star from '../../shared/components/Star/Star.jsx';
 import LikeBtn from '../LikeBtn/LikeBtn.jsx';
@@ -38,7 +38,7 @@ const NoticesItem = ({ item, isNotices }) => {
           </li>
           <li className={s.listItem}>
             <h3 className={s.itemTitle}>Birthday</h3>
-            <p className={s.itemText}>{item.birthday}</p>
+            <p className={s.itemText}>{formatDate(item.birthday)}</p>
           </li>
           <li className={s.listItem}>
             <h3 className={s.itemTitle}>Sex</h3>

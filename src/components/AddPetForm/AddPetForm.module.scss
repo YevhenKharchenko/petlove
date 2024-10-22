@@ -242,12 +242,14 @@ input.input {
 
   @include media(tablet) {
     margin-bottom: 22px;
+    gap: 12px;
   }
 }
 
 .dateWrapper {
   max-width: 144px;
   position: relative;
+  flex-grow: 1;
 
   @include media(tablet) {
     width: 210px;
@@ -276,6 +278,7 @@ input.input {
   border: 1px solid $primary-border-color;
   border-radius: 30px;
   padding: 12px 40px 12px 12px;
+  width: 144px;
   max-width: 144px;
   height: 42px;
   font-family: $primary-font-family;

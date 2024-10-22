@@ -2,8 +2,18 @@ import clsx from 'clsx';
 import Select from 'react-select';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getCategories, getGenders, getSpecies } from '../../redux/notices/operations.js';
-import { selectCategories, selectGenders, selectSpecies } from '../../redux/notices/selectors.js';
+import {
+  getCategories,
+  getCities,
+  getGenders,
+  getSpecies,
+} from '../../redux/notices/operations.js';
+import {
+  selectCategories,
+  selectCities,
+  selectGenders,
+  selectSpecies,
+} from '../../redux/notices/selectors.js';
 import { DEFAULT_OPTION } from '../../constants/index.js';
 import { categoryStyles, locationStyles, speciesStyles } from '../../constants/selectStyles.js';
 import { sprite } from '../../assets/icons/index.js';
@@ -16,6 +26,8 @@ const NoticesFilters = ({
   setKeyword,
   handleCategoriesChange,
   handleSpeciesChange,
+  handleSexChange,
+  handleLocationChange,
   handleSortByPopularity,
   handleSortByPrice,
   radioValue,
@@ -25,11 +37,13 @@ const NoticesFilters = ({
   const categories = useSelector(selectCategories);
   const genders = useSelector(selectGenders);
   const species = useSelector(selectSpecies);
+  const cities = useSelector(selectCities);
 
   useEffect(() => {
     dispatch(getCategories());
     dispatch(getGenders());
     dispatch(getSpecies());
+    dispatch(getCities());
   }, [dispatch]);
 
   return (
@@ -52,6 +66,7 @@ const NoticesFilters = ({
           styles={categoryStyles}
           placeholder="By gender"
           options={[DEFAULT_OPTION, ...genders]}
+          onChange={handleSexChange}
         />
       </div>
       <Select
@@ -60,7 +75,12 @@ const NoticesFilters = ({
         options={[DEFAULT_OPTION, ...species]}
         onChange={handleSpeciesChange}
       />
-      <Select styles={locationStyles} placeholder="Location" />
+      <Select
+        styles={locationStyles}
+        placeholder="Location"
+        options={[DEFAULT_OPTION, ...cities]}
+        onChange={handleLocationChange}
+      />
       <fieldset className={s.fieldset}>
         <label className={clsx(s.radioLabel, radioValue === 'popular' && s.checked)}>
           Popular

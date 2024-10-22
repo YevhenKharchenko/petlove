@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { removePet } from '../../redux/auth/operations.js';
-import { capitalizeFirstLetter } from '../../utils/index.js';
+import { capitalizeFirstLetter, formatDate } from '../../utils/index.js';
 import { sprite } from '../../assets/icons/index.js';
 import s from './PetsItem.module.scss';
 
@@ -32,7 +32,7 @@ const PetsItem = ({ item }) => {
           </li>
           <li className={s.listItem}>
             <h3 className={s.itemTitle}>Birthday</h3>
-            <p className={s.itemText}>{item.birthday}</p>
+            <p className={s.itemText}>{formatDate(item.birthday)}</p>
           </li>
           <li className={s.listItem}>
             <h3 className={s.itemTitle}>Sex</h3>
