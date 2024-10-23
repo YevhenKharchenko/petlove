@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
 import { selectNotices, selectNoticesTotalPages } from '../../redux/notices/selectors.js';
 import { getNotices } from '../../redux/notices/operations.js';
 import { getCurrentUser } from '../../redux/auth/operations.js';
@@ -15,6 +16,7 @@ const NoticesPage = () => {
   const dispatch = useDispatch();
   const notices = useSelector(selectNotices);
   const totalPages = useSelector(selectNoticesTotalPages);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const [currentPage, setCurrentPage] = useState(1);
   const [keyword, setKeyword] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
@@ -39,7 +41,10 @@ const NoticesPage = () => {
         price: sortByPrice,
       })
     );
-    dispatch(getCurrentUser());
+
+    if (isLoggedIn) {
+      dispatch(getCurrentUser());
+    }
   }, [
     dispatch,
     currentPage,
@@ -50,6 +55,7 @@ const NoticesPage = () => {
     location,
     sortByPopularity,
     sortByPrice,
+    isLoggedIn,
   ]);
 
   const handlePageChange = page => {

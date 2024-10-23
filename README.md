@@ -36,6 +36,23 @@ needs.
 - Login functionality
 - Protected routes for authenticated users
 
+## Design
+
+The UI/UX design for PetLove is available on Figma. You can view the layout and design
+specifications here:
+
+[PetLove Figma Layout](https://www.figma.com/design/puMNfZVg4YI8UZoJ1QiLLi/Petl%F0%9F%92%9Bve?node-id=0-1&node-type=canvas&t=INhO6lQts8dHdd9M-0)
+
+Please refer to this design while developing to ensure consistency in the user interface.
+
+## Backend
+
+[PetLove Backend Docs](https://petlove.b.goit.study/api-docs/)
+
+## Tech requirements
+
+[PetLove Tech Requirements](https://docs.google.com/spreadsheets/d/1DmQUeGZy_oaXN6yn69ORLzou1ZQRyTMlrAqPSit_clw/edit?gid=1134921873#gid=1134921873)
+
 ## 🛠️ Technical Stack
 
 ### Core Technologies
